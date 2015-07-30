@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/onsenui.css">
+<link rel="stylesheet" href="css/onsen-css-components.css">
+<script src="js/angular/angular.js"></script>
+<script src="js/onsenui.js"></script>
+<script>
+
+var module = ons.bootstrap();
+module.controller('AppController', function($scope) {
+  ons.createPopover('popover.html').then(function(popover) {
+    $scope.popover = popover;
+  });
+
+  $scope.show = function(e) {
+    $scope.popover.show(e);
+  };
+});
+
+</script>
+</head>
+<body>
+
+
+<ons-navigator title="Navigator" var="myNavigator">
+
+  <ons-page ng-controller="AppController">
+
+  
+    <ons-toolbar>
+        <div class="center">Carousel</div>
+        <div class="right">
+          <ons-toolbar-button id="navigation" ng-click="show('#navigation')" style="z-index=200">
+            <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em">
+          </ons-toolbar-button>
+        </div>      
+    </ons-toolbar>
+  
+
+<ons-row>
+    <ons-carousel swipeable overscrollable auto-scroll fullscreen var="carousel" style="text-align: center">
+      <ons-carousel-item>
+        <img src="http://placekitten.com/g/300/500">
+      </ons-carousel-item>
+      <ons-carousel-item>
+        <img src="http://placekitten.com/g/200/300">
+      </ons-carousel-item>
+      <ons-carousel-item>
+        <img src="http://placekitten.com/g/200/300">
+      </ons-carousel-item>
+      <ons-carousel-item>
+        <img src="http://placekitten.com/g/200/300">
+      </ons-carousel-item>
+
+      <ons-carousel-cover><div class="cover-label">Swipe left or right</div></ons-carousel-cover>
+
+    </ons-carousel>
+</ons-row>
+
+<ons-row>
+<ons-bottom-toolbar>
+<div style="text-align: center">
+    <ons-button modifier="chevron" onclick="myNavigator.pushPage('page1.html', { animation : 'lift' } )">
+      button1
+    </ons-button>
+    <ons-button modifier="chevron" onclick="myNavigator.pushPage('page1.html', { animation : 'slide' } )">
+      button2
+    </ons-button>
+    <ons-button modifier="chevron" onclick="myNavigator.pushPage('page1.html', { animation : 'fade' } )">
+      button3
+    </ons-button>    
+  </div>
+</div>
+</ons-bottom-toolbar>
+</ons-row>
+
+<div>
+ <p>Forum text</p> 
+</div>
+
+
+
+    <ons-template id="page1.html">
+    <ons-page>
+
+      <ons-toolbar>
+        <div class="left"><ons-back-button>Back</ons-back-button></div>
+        <div class="center">Page 2</div>
+      </ons-toolbar>
+      <div style="text-align: center; margin-top: 100px;">
+        <ons-button modifier="light" onclick="myNavigator.popPage()">
+          Pop Page
+        </ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+ <!--
+  <ons-template id="popover.html">
+  <ons-popover direction="down" cancelable>
+    <ons-list>
+      <ons-list-item modifier="tappable">Option 1</ons-list-item>
+      <ons-list-item modifier="tappable">Option 2</ons-list-item>
+      <ons-list-item modifier="tappable">Option 3</ons-list-item>
+    </ons-list>
+  </ons-popover>
+</ons-template>
+-->
+
+  </ons-page>
+</ons-navigator>
+
+
+
+
+
+<script type="text/ons-template" id="popover.html">
+  <ons-popover direction="up down" cancelable>
+    <div style="text-align: center; opacity: 0.5;">
+      <p>This is a popover!</p>
+      <p><small>Click the background to remove the popover</small></p>
+    </div>
+  </ons-popover>
+</script>
+
+</body>
+</html>
