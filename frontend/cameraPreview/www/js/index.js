@@ -80,8 +80,21 @@ var app = {
 		cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
 			document.getElementById('originalPicture').src = result[0];//originalPicturePath;
 			document.getElementById('previewPicture').src = result[1];//previewPicturePath;
+            appendImage(result[1]);
 		});
-	}
+
+    },
+
+};
+app.initialize();
+
+var images = [];
+function appendImage(result) {
+    images.push(result);
 };
 
-app.initialize();
+
+
+
+
+
