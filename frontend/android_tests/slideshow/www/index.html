@@ -1,105 +1,54 @@
 <!DOCTYPE html>
-
 <html>
     <head>
-        <title>Slideshow</title>
+    <title>Slideshow</title>
 <!--        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
 -->
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" href="css/onsenui.css">
-        <link rel="stylesheet" href="css/onsen-css-components.css">    
-        <link rel="stylesheet" type="text/css" href="css/pg.css">
-        <link rel="stylesheet" type="text/css" href="css/pg_light.min.css">
-            <style type="text/css">
-/*    .show-image {
-  
-   position: relative;
-    float: left;
-    margin:5px; 
-    }
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" href="css/onsenui.css">
+    <link rel="stylesheet" href="css/onsen-css-components.css">    
+    <link rel="stylesheet" type="text/css" href="css/pg.css">
+    <link rel="stylesheet" type="text/css" href="css/pg_light.min.css">
+    <script src="js/angular/angular.js"></script>
+    <script src="js/jquery.2.min.js"></script>
+    <script src="js/pg.js"></script>
+    <script src="js/onsenui.js"></script> 
+     
+    <script>
+    var module = ons.bootstrap();
+    module.controller('AppController', function($scope) {
+      ons.createPopover('popover.html').then(function(popover) {
+        $scope.popover = popover;
+      });
 
-    .show-image input{
-    position:absolute;
-    top:5px;
-    right:5px;
-    display:block;
-}
-*/
-    </style>
-        <script src="js/angular/angular.js"></script>
-        <script src="js/jquery.2.min.js"></script>
-        <script src="js/pg.js"></script>
-        <script src="js/onsenui.js"></script> 
-        <script>
-        $(window).load(function(){
-
-        var images = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/5.jpg", "img/6.jpg", "img/9.jpg"];
-
-
-            createImageItem = function(images) {
-                for (i=0; i<images.length; i++) {
-                    var imageURL = images[i];
-                    $("ul").append('<li><img src=' + imageURL + '></li>');
-                    //<input type="image" src="img/del2.png" />
-                }
-            }
-            createImageItem(images);
-
-
-            $('.pgwSlideshow').pgwSlideshow();
-
-            $('.pgwSlideshow .ps-current li').append('<input type="image" src="img/del2.png" />');
-            $(".pgwSlideshow .ps-current li input").click(function(){
-                $(this).parents("li").remove();
-                $('.pgwSlideshow .ps-list li .ps-item.ps-selected').remove();
-                $(".pgwSlideshow .ps-current li img").next().show();
-        });
-
-            
-        });
-        </script>
-        <script>
-        var module = ons.bootstrap();
-        module.controller('AppController', function($scope) {
-          ons.createPopover('popover.html').then(function(popover) {
-            $scope.popover = popover;
-          });
-
-          $scope.show = function(e) {
-            $scope.popover.show(e);
-          };
-        });
-        </script>
-
+      $scope.show = function(e) {
+        $scope.popover.show(e);
+      };
+    });
+    </script>
     </head>
-    <body>
 
+    <body>
     <ons-navigator title="Navigator" var="myNavigator">
         <ons-page>
-
-        <ul class="pgwSlideshow">      
-        </ul>
+          <ul class="pgwSlideshow"></ul>
 
 
+    <div class="navigation-bar">
+      <div class="navigation-bar__left" modifier="chevron" onclick="myNavigator.pushPage('page1.html', { animation : 'lift' } )">
+        <ons-button>
+          Add More
+        </ons>
+      </div>
 
-<div class="navigation-bar">
-  <div class="navigation-bar__left" modifier="chevron" onclick="myNavigator.pushPage('page1.html', { animation : 'lift' } )">
-    <ons-button>
-      Add More
-    </ons>
-  </div>
+      <div class="navigation-bar__center"> </div>
 
-  <div class="navigation-bar__center">
- 
-  </div>
-
-  <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('page1.html', { animation : 'lift' } )">
-    <div class="button navigation-bar__line-height">Next</div>
-  </div>
-</div>
-
+      <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('page1.html', { animation : 'lift' } )">
+        <div class="button navigation-bar__line-height">Next</div>
+      </div>
+    </div>
 
 
     <ons-template id="page1.html">
@@ -116,14 +65,10 @@
       </ons-page>
     </ons-template>
 
-
-
- 
-    </ons-page>
-  </ons-navigator>
-
-
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+      </ons-page>
+    </ons-navigator>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="js/slideshow.js"></script>
     </body>
 </html>
