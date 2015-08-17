@@ -11,17 +11,18 @@ var app = {
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.getElementById('startCameraButton').addEventListener('mousedown', this.onStartCamera, false);
-        document.getElementById('startCameraAnotherPosButton').addEventListener('mousedown', this.onStartCameraAnotherPos, false);
+        var self = this;
+        document.getElementById('startCameraButton').addEventListener('mousedown', self.onStartCamera, false);
+        document.getElementById('startCameraAnotherPosButton').addEventListener('mousedown', self.onStartCameraAnotherPos, false);
 
-        document.getElementById('stopCameraButton').addEventListener('mousedown', this.onStopCamera, false);
-        document.getElementById('takePictureButton').addEventListener('mousedown', this.onTakePicture, false);
-        document.getElementById('switchCameraButton').addEventListener('mousedown', this.onSwitchCamera, false);
+        document.getElementById('stopCameraButton').addEventListener('mousedown', self.onStopCamera, false);
+        document.getElementById('takePictureButton').addEventListener('mousedown', self.onTakePicture, false);
+        document.getElementById('switchCameraButton').addEventListener('mousedown', self.onSwitchCamera, false);
         // document.getElementById('showButton').addEventListener('mousedown', this.onShow, false);
         // document.getElementById('hideButton').addEventListener('mousedown', this.onHide, false);
         // document.getElementById('colorEffectCombo').addEventListener('change', this.onColorEffectChanged, false);
         //window.addEventListener('orientationchange', this.onStopCamera, false);
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', self.onDeviceReady, false);
     },
 
     onStartCamera: function() {
@@ -78,13 +79,48 @@ var app = {
     //     console.log('Received Event: ' + id);
     // }
     },
+    initSlide: function() {
+        createImageItem(images);
+
+        $('.pgwSlideshow').pgwSlideshow();
+
+        $('.pgwSlideshow .ps-current li').append('<input type="image" src="img/del2.png" />');
+        $(".pgwSlideshow .ps-current li input").click(function(){
+            $(this).parents("li").remove();
+            $('.pgwSlideshow .ps-list li .ps-item.ps-selected').remove();
+            $(".pgwSlideshow .ps-current li img").next().show();
+        });
+
+    }
+
 };
-app.initialize();
+
+$(function(){
+    setTimeout(function() {
+        app.bindEvents();
+    }, 0);
+});
+
 
 var images = [];
 function appendImage(result) {
     images.push(result);
 };
+
+
+createImageItem = function(imgs) {
+    for (i=0; i<imgs.length; i++) {
+        var imageURL = imgs[i];
+        $("ul").append('<li><img src=' + imageURL + '></li>');
+        //<input type="image" src="img/del2.png" />
+    }
+};
+
+$(document).on('pageinit', '#slide', function() {
+  app.initSlide();
+})
+
+
 
 
 

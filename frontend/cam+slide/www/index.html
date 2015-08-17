@@ -15,8 +15,12 @@
         <title>Camera Slide</title>
         <script type="text/javascript" src="js/angular/angular.js"></script>
         <script type="text/javascript" src="js/jquery.2.min.js"></script>
-        <script type="text/javascript" src="js/pg.js"></script>
         <script type="text/javascript" src="js/onsenui.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="cordova_plugins.js"></script>
+        <script type="text/javascript" src="CameraPreview.js"></script>
+        <script type="text/javascript" src="js/pg.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
         <script> ons.bootstrap(); </script>
 
     </head>
@@ -50,7 +54,7 @@
 
     <ons-template id="slide.html">
 
-        <ons-page>
+        <ons-page id="slide">
           <ul class="pgwSlideshow"></ul>
 
 
@@ -106,12 +110,6 @@
 
 </ons-page>
     </ons-navigator>
-
-
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="js/slideshow.js"></script>
-
-		<script type="text/javascript" src="CameraPreview.js"></script>
+        <!-- // <script type="text/javascript" src="js/slideshow.js"></script> -->
     </body>
 </html>
