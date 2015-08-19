@@ -81,8 +81,12 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
-        'ENGINE': 'django.contrib.gis.db.backends.spatialite',
-        'NAME': 'geodjango',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'pulilab',
+        'HOST': '192.168.99.100',
+        'PORT': '5432',
 
     }
 }
