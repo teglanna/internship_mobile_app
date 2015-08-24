@@ -14,39 +14,9 @@
         <script src="js/angular/angular.js"></script>
         <script src="js/jquery.min.js"></script>
         <script src="js/onsenui.js"></script>
+        <script src="js/description_roll.js"></script>
         <script src="js/pic.js"></script>
         <script> ons.bootstrap(); </script>
-        <script>
-            $(document).ready(function(){
-            var images = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/5.jpg", "img/6.jpg", "img/7.png", "img/8.jpg", "img/9.jpg"];
-
-
-            createImage = function(imgs) {
-                for (i = 0; i < imgs.length; i++) {
-                    var imageURL = imgs[i];
-                    $(".wrapper").append('<div class="pic"><img src=' + imageURL + '></div>');
-                }
-            };
-
-
-            setWidth = function() {
-                var img_num = $('.wrapper').children().length;
-                var img_width = $('.wrapper').children().width();
-                var roll_width = img_num * (img_width + 10);
-                $('.wrapper').css('width', roll_width);
-
-
-                // for (i = 0; i < imgs.length; i++) {
-                //     roll_width = roll_width + i.offsetWidth + 10;
-                // }
-            };
-
-            createImage(images);
-            setWidth();
-        });
-
-        </script>
-
     </head>
     <body>
         <ons-navigator title="Navigator" var="myNavigator">
