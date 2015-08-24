@@ -24,14 +24,13 @@ textarea.textarea.description {
     overflow-y: hidden;
     overflow-x: scroll;
     width: 100vw;
-    height: 70px;
-    display: flex;
-    flex-wrap: wrap;
+    /*height: 70px;*/
+
 }
 
 .wrapper {
     height: 70px;
-    /*width: 600px;*/
+    display: flex;
 }
 
 .pic {
@@ -44,6 +43,7 @@ textarea.textarea.description {
 .pic img {
     width: 60px;
     height: 60px;
+    float: left;
 }
 
 .active {

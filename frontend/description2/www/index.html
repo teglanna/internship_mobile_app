@@ -29,16 +29,20 @@
             };
 
 
-            setWidth = function(imgs) {
-                var roll_width = 0;
-                for (i = 0; i < imgs.length; i++) {
-                    roll_width = roll_width + i.offsetWidth;
-                }
+            setWidth = function() {
+                var img_num = $('.wrapper').children().length;
+                var img_width = $('.wrapper').children().width();
+                var roll_width = img_num * (img_width + 10);
                 $('.wrapper').css('width', roll_width);
+
+
+                // for (i = 0; i < imgs.length; i++) {
+                //     roll_width = roll_width + i.offsetWidth + 10;
+                // }
             };
 
             createImage(images);
-            setWidth(images);
+            setWidth();
         });
 
         </script>
