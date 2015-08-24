@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+    <title>Geolocation test</title>
+    <meta charset="utf-8">           
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"> 
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <link rel="stylesheet" href="css/onsenui.css"/>
+    <link rel="stylesheet" href="css/onsen-css-components.css"/>
+    <link rel="stylesheet" href="css/index2.css"> 
+    <script src="js/angular/angular.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script> 
+    <script src="js/onsenui.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>    
+    <script type="text/javascript">ons.bootstrap();</script>
+
+    </head>
+    <body>
+
+    <ons-navigator title="Navigator" var="myNavigator">
+        <ons-page>
+
+        <!--
+            <h2>State</h2>
+            <ul id="state">
+                <li class="location">
+                    <span class="name">Location</span>
+                    <span class="state on">ENABLED</span>
+                    <span class="state off">DISABLED</span>
+                </li>
+            </ul>
+            <div id="settings">
+                <button id="do-check">Re-check state</button>
+            </div>
+        -->
+            <ons-template id="loc.html">
+                <ons-page id="loc" style="visible:hidden">
+                    <div><p>
+                        'Whoops, your phones "Location Service" shall be turned on so we can find the stuff close to your location. Enable and:'
+                    </p></div>
+
+                </ons-page>                
+            </ons-template>
+
+            
+
+        </ons-page>
+    </ons-navigator>
+
+    <script type="text/javascript" src="js/index.js"></script> 
+    </body>
+</html>
