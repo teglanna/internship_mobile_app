@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="css/onsenui.css">
+        <link rel="stylesheet" href="css/onsen-css-components.css">
+        <link rel="stylesheet" href="css/custom_desc.css">
+        <title>Hello World</title>
+        <script src="js/angular/angular.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/onsenui.js"></script>
+        <script src="js/pic.js"></script>
+        <script> ons.bootstrap(); </script>
+        <script>
+            $(document).ready(function(){
+            var images = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/5.jpg", "img/6.jpg", "img/7.png", "img/8.jpg", "img/9.jpg"];
+
+
+            createImage = function(imgs) {
+                for (i = 0; i < imgs.length; i++) {
+                    var imageURL = imgs[i];
+                    $(".wrapper").append('<div class="pic"><img src=' + imageURL + '></div>');
+                }
+            };
+
+
+            setWidth = function(imgs) {
+                var roll_width = 0;
+                for (i = 0; i < imgs.length; i++) {
+                    roll_width = roll_width + i.offsetWidth;
+                }
+                $('.wrapper').css('width', roll_width);
+            };
+
+            createImage(images);
+            setWidth(images);
+        });
+
+        </script>
+
+    </head>
+    <body>
+        <ons-navigator title="Navigator" var="myNavigator">
+        <ons-page>
+        <ons-toolbar>
+        <div class="right">
+            <ons-toolbar-button id="navigation" ng-click="show('#navigation')">
+            <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em">
+            </ons-toolbar-button>
+        </div>
+        <div class="center">Add Description</div>
+        </ons-toolbar>
+        <div>
+            <p id="price_title">Price</p>
+            <ons-row>
+                <ons-col width="15%" class="huf">HUF</ons-col>
+                <ons-col width="45%"><textarea class="textarea price" rows="1" placeholder="Price"></textarea></ons-col>
+            </ons-row>
+        </div>
+        <ons-row>
+            <ons-col width="100%"><textarea class="textarea description" rows="5" placeholder="Description"></textarea></ons-col>
+        </ons-row>
+        <div>
+            <p>Delivery</p>
+            <label class="checkbox">
+              <input type="checkbox" checked="checked">
+              <div class="checkbox__checkmark"></div>
+              Buyer can pickup
+            </label>
+            <br>
+            <label class="checkbox">
+              <input type="checkbox" checked="checked">
+              <div class="checkbox__checkmark"></div>
+              I can offer delivery
+            </label>
+        </div>
+        <p>Actual image</p>
+        <div class="images">
+            <div class="wrapper">
+                <!-- <div class="pic active"></div>
+                <div class="pic"></div>
+                <div class="pic"></div>
+                <div class="pic"></div>
+                <div class="pic"></div>
+                <div class="pic"></div> -->
+            </div>
+        </div>
+        <div class="submit">
+            <ons-button class="button">Post</ons-button>
+        </div>
+    </ons-page>
+    </ons-navigator>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
