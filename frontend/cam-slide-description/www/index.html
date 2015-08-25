@@ -22,7 +22,6 @@
         <script type="text/javascript" src="CameraPreview.js"></script>
         <script type="text/javascript" src="js/pg.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <!-- // <script type="text/javascript" src="js/description_roll.js"></script> -->
         <script type="text/javascript" src="js/pic.js"></script>
 
         <script> ons.bootstrap(); </script>
@@ -76,12 +75,8 @@
           </div>
         </div>
 
-          </ons-page>
-    </ons-template>
 
-<!-- end slide page -->
-
-<!-- description page -->
+        <!-- description page -->
 
     <ons-template id="description.html">
         <ons-page id="description">
@@ -118,24 +113,31 @@
                 <ons-button class="button" modifier="chevron" onclick="myNavigator.pushPage('success.html')">Post</ons-button>
             </div>
 
+        <!-- success page -->
+
+            <ons-template id="success.html">
+                <ons-page>
+                    <h1>Your item is now active!</h1>
+                    <p>Good luck!</p>
+                    <p>Spread the word!</p>
+                </ons-page>
+            </ons-template>
+
+        <!-- end success page -->
+
+
+
         </ons-page>
     </ons-template>
 
 <!-- end description page -->
 
-<!-- success page -->
-
-    <ons-template id="success.html">
-        <ons-page>
-            <h1>Your item is now active!</h1>
-            <p>Good luck!</p>
-            <p>Spread the word!</p>
-        </ons-page>
+          </ons-page>
     </ons-template>
 
-<!-- end success page -->
+<!-- end slide page -->
 
-</ons-page>
+        </ons-page>
     </ons-navigator>
     </body>
 </html>
