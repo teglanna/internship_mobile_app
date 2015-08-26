@@ -1,9 +1,3 @@
-#cameraBody{
-    background-color: transparent;
-    height:100%;
-
-}
-
 #camera_box{
     height:100%;
     color:#333;
@@ -11,10 +5,7 @@
     font-family: sans-serif;
     background-color: transparent;
 }
-.pictures{
-    /*display: none;*/
-}
+
 .controls{
     margin-top:100%;
-
 }

@@ -27,15 +27,18 @@ textarea.textarea.description {
 }
 
 .wrapper {
-    width: 600px;
 }
 
 .pic {
     width: 60px;
     height: 60px;
-    background-color: red;
     margin-right: 10px;
     float: left;
+}
+
+.pic img {
+    width: 60px;
+    height: 60px;
 }
 
 .active {

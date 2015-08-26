@@ -2,10 +2,6 @@ var app = {
     temp : {
         DEVICE_WIDTH: window.innerWidth,
     },
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
@@ -28,7 +24,7 @@ var app = {
     },
 
     onDeviceReady: function() {
-        app.onStartCamera();
+        // app.onStartCamera();
         cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
             document.getElementById('originalPicture').src = result[0];//originalPicturePath;
             document.getElementById('previewPicture').src = result[1];//previewPicturePath;
@@ -58,11 +54,11 @@ var app = {
 
 };
 
-$(function(){
-    setTimeout(function() {
-        app.bindEvents();
-    }, 0);
-});
+// $(function(){
+//     setTimeout(function() {
+//         app.bindEvents();
+//     }, 0);
+// });
 
 
 var images = [];
@@ -102,10 +98,19 @@ setPicActive = function() {
     });
 };
 
+setCamBackground = function() {
+    $('ons-sliding-menu').children().css('background-color', 'transparent');
+};
+
 $(document).on('picture-ready', function() {
     app.initSlide();
 });
 
+$(document).on('pageinit', '#camera', function() {
+    setCamBackground();
+    app.bindEvents();
+    app.onStartCamera();
+});
 
 $(document).on('pageinit', '#description', function() {
     app.initDescription();
