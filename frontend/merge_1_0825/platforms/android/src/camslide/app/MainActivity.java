@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.example.swipe;
+package camslide.app;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

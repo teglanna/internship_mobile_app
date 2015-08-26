@@ -79,9 +79,8 @@ var app = {
     //     console.log('Received Event: ' + id);
     // }
     },
-
     initSlide: function() {
-        createImageSlide(images);
+        createImageItem(images);
 
         $('.pgwSlideshow').pgwSlideshow();
 
@@ -91,11 +90,7 @@ var app = {
             $('.pgwSlideshow .ps-list li .ps-item.ps-selected').remove();
             $(".pgwSlideshow .ps-current li img").next().show();
         });
-    },
 
-    initDescription: function() {
-        createImageDescription(images);
-        setRollWidth();
     }
 
 };
@@ -113,42 +108,20 @@ function appendImage(result) {
 };
 
 
-createImageSlide = function(imgs) {
-    for (i = 0; i < imgs.length; i++) {
+createImageItem = function(imgs) {
+    for (i=0; i<imgs.length; i++) {
         var imageURL = imgs[i];
         $("ul").append('<li><img src=' + imageURL + '></li>');
         //<input type="image" src="img/del2.png" />
     }
 };
 
-
-createImageDescription = function(imgs) {
-    for (i = 0; i < imgs.length; i++) {
-        var imageURL = imgs[i];
-        $(".wrapper").append('<div class="pic"><img src=' + imageURL + '></div>');
-    }
-};
-
-
-setRollWidth = function() {
-    var img_num = $('.wrapper').children().length;
-    var img_width = $('.wrapper').children().width();
-    var roll_width = img_num * (img_width + 10) + 6;
-    $('.wrapper').css('width', roll_width);
-};
-
-
-/*
 $(document).on('pageinit', '#slide', function() {
-    app.initSlide();
-});
-*/
+  app.initSlide();
+})
 
-/*$(document).on('pageinit', '#description', function() {
-    app.initDescription();
-});
 
-*/
+
 
 
 
