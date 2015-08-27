@@ -25,29 +25,16 @@
         <script type="text/javascript" src="CameraPreview.js"></script>
         <script type="text/javascript" src="js/pg.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-<!--
-        <script> ons.bootstrap(); </script>
--->
-
 <body>
 
-<!--
-    <h2>State</h2>
-        <ul id="state">
-            <li class="location">
-                <span class="name">Location</span>
-                <span class="state on">ENABLED</span>
-                <span class="state off">DISABLED</span>
-            </li>
-        </ul>
-        <div id="settings">
-            <button id="do-check">Re-check state</button>
-        </div>
--->
-
+<!-- main page -->
    
 <ons-sliding-menu main-page="page1.html" menu-page="menu.html" side="right" swipeable=False var="menu">
 </ons-sliding-menu>
+
+
+<!-- load page -->
+
 
 <script type="text/ons-template" id="page1.html">
   <ons-page id="page1">
@@ -66,12 +53,10 @@
             <span class="state off">DISABLED</span>
         </li>
     </ul>
--->    
-    <!--/*
     <div id="settings">
         <button id="do-check">Re-check state</button>
     </div>*/
-    -->
+-->
 
     <div id="disabled">
       <p>
@@ -90,7 +75,9 @@
         <div class="center">Picture</div>
       </ons-toolbar>
 
-      <div style="height:300px"></div>
+      <div id="main-pic"style="height:300px">
+        <img src="1.jpg"/>
+      </div>
                 
       <div class="navigation-bar">
         <div class="navigation-bar__left">
@@ -114,16 +101,22 @@
   </ons-page>
 </script>
 
+<!-- menu page -->
+
 <script type="text/ons-template" id="menu.html">
   <ons-list>
-    <ons-list-item modifier="chevron" onclick="menu.setMainPage('page1.html', {closeMenu: true})">
+    <!-- <ons-list-item modifier="chevron" onclick="menu.setMainPage('page1.html', {closeMenu: true})">
       page1.html
-    </ons-list-item>
+    </ons-list-item> 
+    -->
     <ons-list-item modifier="chevron" onclick="menu.setMainPage('camera.html', {closeMenu: true})">
-      page2.html
+      Camera
     </ons-list-item>
   </ons-list>
 </script>
+
+<!-- home page -->
+
 
 <script type="text/ons-template" id="home.html">
   <ons-page id="home">
@@ -134,7 +127,9 @@
       <div class="center">Picture</div>
     </ons-toolbar>
 
-<div style="height:300px"> </div>
+<div style="height:300px">
+  <img src="1.jpg">
+</div>
 
 <div class="navigation-bar">
   <div class="navigation-bar__left">
@@ -156,6 +151,7 @@
 </ons-page>
 </script>
 
+<!-- camera page -->
 
 
 <script type="text/ons-template" id="camera.html">
@@ -166,6 +162,9 @@
         <div class="block">
             <ons-button id="takePictureButton" modifier="chevron" onclick="myNavigator.pushPage('slide.html')">Snap</ons-button>
         </div>
+        <div class="block">
+              <ons-button modifier="chevron" onclick="myNavigator.pushPage('page1.html')">Back</ons-button>
+          </div>
       </div>
       <div class="pictures" style="display:none;">
         <p><img id="previewPicture" width="200"/></p>
@@ -177,27 +176,32 @@
   </ons-navigator>
 </script>
 
+<!-- slide page -->
 
 
 <script type="text/ons-template" id="slide.html">
     <ons-page id="slide">
-                  <ul class="pgwSlideshow"></ul>
+      <ul class="pgwSlideshow"></ul>
 
-                <div class="navigation-bar">
-                  <div class="navigation-bar__left">
-                    <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-                      Add More
-                    </ons-button>
-                  </div>
+    <div class="navigation-bar">
+      <div class="navigation-bar__left">
+        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+          Add More
+        </ons-button>
+      </div>
 
-                  <div class="navigation-bar__center"> </div>
+      <div class="navigation-bar__center"> </div>
 
-                  <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('description.html')">
-                    <div class="button navigation-bar__line-height">Next</div>
-                  </div>
-                </div>
+      <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('description.html')">
+        <div class="button navigation-bar__line-height">Next</div>
+      </div>
+    </div>
     </ons-page>
 </script>
+
+
+<!-- description page -->
+
 
 <script type="text/ons-template" id="description.html">
     <ons-page id="description">
