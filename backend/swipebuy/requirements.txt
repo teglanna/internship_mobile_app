@@ -1,0 +1,16 @@
+Django==1.8.4
+Pillow==2.9.0
+argparse==1.2.1
+cffi==0.8.6
+chardet==2.3.0
+colorama==0.3.2
+cryptography==0.6.1
+html5lib==0.999
+ndg-httpsclient==0.3.2
+ply==3.4
+pytest==2.7.0
+pytest-cov==1.8.1
+pytest-django==2.8.0
+pytest-xdist==1.11
+djangorestframework
+ipdb

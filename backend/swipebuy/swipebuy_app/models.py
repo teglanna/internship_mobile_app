@@ -2,13 +2,6 @@
 from django.contrib.gis.db import models
 from django.contrib.auth.models import User
 
-action_choices = (
-    (1, 'swiping'),
-    (2, 'make_bid'),
-    (3, 'buy'),
-)
-
-
 class DateHelper(models.Model):
     created = models.DateTimeField(auto_now=False, auto_now_add=True)
     modified = models.DateTimeField(auto_now=True, auto_now_add=False)
@@ -22,7 +15,9 @@ class CheckIn(DateHelper):
     location = models.PointField(null=False, blank=False)
 
     def __unicode__(self):
-        return self.location, self.user
+        x = self.location.get_x()
+        y = self.location.get_y()
+        return "at (%f, %f) for %s" % (x, y, self.user)
 
 
 class Stuff(DateHelper):
@@ -37,7 +32,7 @@ class Stuff(DateHelper):
     buy_time = models.DateTimeField(null=True, blank=True)
 
     def __unicode__(self):
-        return self.description, self.user, self.active, self.price
+        return "%s (user: %s) [active: %r] for %d" % (self.description, self.user, self.active, self.price)
 
 
 class Image(DateHelper):
@@ -45,7 +40,7 @@ class Image(DateHelper):
     image = models.ImageField()
 
     def __unicode__(self):
-        return self.image.url
+        return "%s for %s" % (self.image.name, self.stuff)
 
 
 class Message(DateHelper):
@@ -56,15 +51,19 @@ class Message(DateHelper):
     bid = models.IntegerField(blank=True, null=True)
 
     def __unicode__(self):
-        return self.text
+        return "[from: %s to: %s] %s" % (self.author, self.recipient, self.text)
 
 
 class SwipeAction(DateHelper):
+    SWIPING, MAKE_BID, BUY= 0, 1, 2
+    ACTION_CHOICES = (
+        (SWIPING, 'swiping'),
+        (MAKE_BID, 'make bid'),
+        (BUY, 'buy'),
+    )
     user = models.ForeignKey(User)
     stuff = models.ForeignKey(Stuff)
-    action = models.IntegerField(choices=action_choices)
+    action = models.IntegerField(choices=ACTION_CHOICES)
 
     def __unicode__(self):
-        return self.action
-
-
+        return "action: %s for %s for %s" % (self.ACTION_CHOICES[self.action][1], self.stuff, self.user)

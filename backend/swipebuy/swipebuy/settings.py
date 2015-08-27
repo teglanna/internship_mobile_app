@@ -86,8 +86,7 @@ DATABASES = {
         'USER': 'swipebuyuser',
         'PASSWORD': 'djeuiiouy8973649ouijkjkajdu8',
         'HOST': 'localhost',
-#        'PORT': '5432',
-
+        'PORT': '5432'
     }
 }
 
