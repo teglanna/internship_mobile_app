@@ -81,12 +81,12 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'pulilab',
-        'HOST': '192.168.99.100',
-        'PORT': '5432',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'swipebuydb',
+        'USER': 'swipebuyuser',
+        'PASSWORD': 'djeuiiouy8973649ouijkjkajdu8',
+        'HOST': 'localhost',
+#        'PORT': '5432',
 
     }
 }
