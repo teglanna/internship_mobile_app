@@ -5,10 +5,10 @@ from django.core.files import File
 from django.test import TestCase
 from django.contrib.gis.geos import Point
 from django.contrib.gis.measure import D
-from swipebuy_app.models import Stuff, CheckIn, SwipeAction, Message, Image
+from ..models import Stuff, CheckIn, SwipeAction, Message, Image
 
 
-class UserStuffMixin(object):
+class DataMixin(object):
     user, created = User.objects.get_or_create(username="test", password="test", is_superuser=True, email="test@test.com")
     ref_location = Point(1.232433, 1.2323232)
     stuff = Stuff.objects.create(user=user, location=ref_location, description="test", price=999)
@@ -16,7 +16,7 @@ class UserStuffMixin(object):
     assert stuff
 
 
-class TestCaseModels(UserStuffMixin, TestCase):
+class TestCaseModels(DataMixin, TestCase):
     def test_stuff_object(self):
         assert isinstance(self.stuff.modified, datetime)
         assert isinstance(self.stuff.created, datetime)
