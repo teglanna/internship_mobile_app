@@ -105,12 +105,11 @@
 
 <script type="text/ons-template" id="menu.html">
   <ons-list>
-    <!-- <ons-list-item modifier="chevron" onclick="menu.setMainPage('page1.html', {closeMenu: true})">
-      page1.html
+    <ons-list-item modifier="chevron" onclick="menu.setMainPage('home.html', {closeMenu: true})">
+      Home
     </ons-list-item> 
-    -->
     <ons-list-item modifier="chevron" onclick="menu.setMainPage('camera.html', {closeMenu: true})">
-      Camera
+      Sell
     </ons-list-item>
   </ons-list>
 </script>
@@ -163,7 +162,7 @@
             <ons-button id="takePictureButton" modifier="chevron" onclick="myNavigator.pushPage('slide.html')">Snap</ons-button>
         </div>
         <div class="block">
-              <ons-button modifier="chevron" onclick="myNavigator.pushPage('page1.html')">Back</ons-button>
+              <ons-button modifier="chevron" onclick="myNavigator.pushPage('home.html')">Back</ons-button>
           </div>
       </div>
       <div class="pictures" style="display:none;">
@@ -238,6 +237,8 @@
             <ons-button class="button" modifier="chevron" onclick="myNavigator.pushPage('success.html')">Post</ons-button>
         </div>
 </script>
+
+<!-- success page -->
 
 <script type="text/ons-template" id="success.html">
     <ons-page>
