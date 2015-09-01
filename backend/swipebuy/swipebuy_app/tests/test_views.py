@@ -112,6 +112,7 @@ class StuffViewTest(DataMixin, TestCase):
         resp = view(request)
 
 
+
         assert resp.status_code == 200
         assert resp.data['count'] == 0
         assert not resp.data['results']
@@ -126,13 +127,14 @@ class StuffViewTest(DataMixin, TestCase):
             'pickup': True,
             'delivery': False,
             'price': 999,
-            'main_img': 'picture.jpg',
             'active': True
         }
         request = factory.post(reverse('stuff-list'), json.dumps(data), content_type='application/json')
 
         view = StuffViewSet.as_view({'post': 'create'})
         resp = view(request)
+
+        # import pdb; pdb.set_trace()
 
         assert resp.status_code == 201
         assert resp.data['user'] == self.user.id
@@ -141,7 +143,6 @@ class StuffViewTest(DataMixin, TestCase):
         assert resp.data['pickup'] == data['pickup']
         assert resp.data['delivery'] == data['delivery']
         assert resp.data['price'] == data['price']
-        assert resp.data['main_img'] == data['main_img']
         assert resp.data['active'] == data['active']
 
     def test_stuffs_get_results(self):
@@ -154,7 +155,6 @@ class StuffViewTest(DataMixin, TestCase):
             'pickup': True,
             'delivery': False,
             'price': 999,
-            'main_img': 'picture.jpg',
             'active': True
         }
 
@@ -169,7 +169,6 @@ class StuffViewTest(DataMixin, TestCase):
         view = StuffViewSet.as_view({'get': 'list'})
         resp = view(request_get)
 
-        # import pdb; pdb.set_trace()
 
 
         results = resp.data['results'][0]
@@ -182,7 +181,6 @@ class StuffViewTest(DataMixin, TestCase):
         assert results['pickup'] == data['pickup']
         assert results['delivery'] == data['delivery']
         assert results['price'] == data['price']
-        assert results['main_img'] == data['main_img']
         assert results['active'] == data['active']
 
     def test_stuffs_get_detail(self):
@@ -195,7 +193,6 @@ class StuffViewTest(DataMixin, TestCase):
             'pickup': True,
             'delivery': False,
             'price': 999,
-            'main_img': 'picture.jpg',
             'active': True
         }
         request_post = factory.post(reverse('stuff-list'), json.dumps(data), content_type='application/json')
@@ -218,5 +215,4 @@ class StuffViewTest(DataMixin, TestCase):
         assert resp.data['pickup'] == data['pickup']
         assert resp.data['delivery'] == data['delivery']
         assert resp.data['price'] == data['price']
-        assert resp.data['main_img'] == data['main_img']
         assert resp.data['active'] == data['active']
