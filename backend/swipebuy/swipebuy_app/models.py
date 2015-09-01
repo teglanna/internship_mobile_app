@@ -1,5 +1,6 @@
-# from django.db import models
+from django.conf import settings
 from django.contrib.gis.db import models
+from django.contrib.gis.measure import D
 from django.contrib.auth.models import User
 
 class DateHelper(models.Model):
@@ -20,6 +21,16 @@ class CheckIn(DateHelper):
         return "at (%f, %f) for %s" % (x, y, self.user)
 
 
+class StuffManager(models.GeoManager):
+
+    """
+    :location: reference location
+    :proximity: distance radius limit
+    """
+    def sort_by_distance(self, location, proximity=settings.PROXIMITY_DEFAULT):
+        return self.get_queryset().filter(location__distance_lte=(location, D(m=proximity))).distance(location).order_by('distance')
+
+
 class Stuff(DateHelper):
     user = models.ForeignKey(User)
     location = models.PointField(null=False, blank=False)
@@ -30,6 +41,8 @@ class Stuff(DateHelper):
     main_img = models.OneToOneField("swipebuy_app.Image", blank=True, null=True, related_name='main_image')
     active = models.BooleanField(default=True)
     buy_time = models.DateTimeField(null=True, blank=True)
+
+    objects = StuffManager()
 
     def __unicode__(self):
         return "%s (user: %s) [active: %r] for %d" % (self.description, self.user, self.active, self.price)
