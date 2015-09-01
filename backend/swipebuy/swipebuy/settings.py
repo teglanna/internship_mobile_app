@@ -116,3 +116,5 @@ REST_FRAMEWORK = {
     # 'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
     'PAGE_SIZE': 10
 }
+
+PROXIMITY_DEFAULT = 15 * 1000 # 15km Budapest radius

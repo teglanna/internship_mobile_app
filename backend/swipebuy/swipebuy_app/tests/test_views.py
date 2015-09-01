@@ -111,8 +111,6 @@ class StuffViewTest(DataMixin, TestCase):
         view = StuffViewSet.as_view({'get': 'list'})
         resp = view(request)
 
-
-
         assert resp.status_code == 200
         assert resp.data['count'] == 0
         assert not resp.data['results']
@@ -133,8 +131,6 @@ class StuffViewTest(DataMixin, TestCase):
 
         view = StuffViewSet.as_view({'post': 'create'})
         resp = view(request)
-
-        # import pdb; pdb.set_trace()
 
         assert resp.status_code == 201
         assert resp.data['user'] == self.user.id
@@ -168,8 +164,6 @@ class StuffViewTest(DataMixin, TestCase):
 
         view = StuffViewSet.as_view({'get': 'list'})
         resp = view(request_get)
-
-
 
         results = resp.data['results'][0]
 

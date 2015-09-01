@@ -1,5 +1,6 @@
 from datetime import datetime
 import os
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.test import TestCase
@@ -85,7 +86,7 @@ class TestCaseModels(DataMixin, TestCase):
         # remove temp file
         os.remove(dummy_image_file.name)
 
-    def create_stuff_with_main_image(self):
+    def test_create_stuff_with_main_image(self):
         dummy_image_file = File(open(__file__, 'rb'), 'testimage.jpg')
 
         image = Image.objects.create(image=dummy_image_file, stuff=self.stuff)
@@ -94,3 +95,28 @@ class TestCaseModels(DataMixin, TestCase):
 
         assert stuff
         assert stuff.main_img == image
+
+        # remove temp file
+        os.remove(dummy_image_file.name)
+
+
+class DistanceTest(DataMixin, TestCase):
+
+    def test_sort_by_distance(self):
+        self.user.save()
+        self.stuff.save()
+        # ref_location1 = Point(1.232433, 1.2323232)
+        ref_location2 = Point(1.3, 1.3)
+        stuff1 = self.stuff
+        stuff2 = Stuff.objects.create(user=self.user, location=ref_location2, description="test2", price=9999)
+
+        user_location = Point(1.29, 1.29)
+
+        stuffs = Stuff.objects.sort_by_distance(user_location)
+
+        assert stuffs.count() == 2
+        assert stuffs[0].location == stuff2.location
+        assert stuffs[1].location == stuff1.location
+        assert stuffs[0].distance.standard < stuffs[1].distance.standard
+        assert stuffs[0].distance.standard < settings.PROXIMITY_DEFAULT
+        assert stuffs[1].distance.standard < settings.PROXIMITY_DEFAULT
