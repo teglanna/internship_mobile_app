@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Message, Stuff
+from .models import Message, Stuff, Image, SwipeAction
 
 
 class MessageSerializer(serializers.ModelSerializer):
@@ -12,3 +12,15 @@ class StuffSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stuff
         fields = ('id', 'user', 'location', 'description', 'pickup', 'delivery', 'price', 'main_img', 'active')
+
+
+class ImageSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Image
+		fields = ('id', 'stuff', 'image')
+
+class ActionSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = SwipeAction
+		fields = ('id', 'user', 'stuff', 'action')
+
