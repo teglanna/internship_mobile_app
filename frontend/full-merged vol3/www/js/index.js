@@ -201,26 +201,27 @@ createCarousel = function(imgs) {
     for (var i = 0; i < imgs.length; i++) {
         var imageURL = imgs[i];
         $("ons-modal#pic_modal ons-carousel").append('<ons-carousel-item><img src=' + imageURL + '></ons-carousel-item>');
-        $("ons-carousel-item").css('visibility', 'visible');
+        
     }
     
 };
-
 */
+
 
 $(document).on("pageinit", '#page1', function() {
     setCarouselHeight();
 
-//  createCarousel(images2);  
-  $("ons-carousel-item img", this).click(function() {
-    $('#pic_modal').show();
+//    createCarousel(images2);  
+    $("ons-carousel-item img", this).click(function() {
+        $('#pic_modal').show();
 
-  $('#close').click(function() {
-   $('#pic_modal').hide();
-});
+        $('#close').click(function() {
+            $('#pic_modal').hide();
+        });
 
-//    setTimeout("$('#pic_modal').hide()", 2000);
+//        carousel.refresh();        
   });
+    
 });
 
 
