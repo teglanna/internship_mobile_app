@@ -172,6 +172,18 @@ setPicActive = function() {
 setCamBackground = function() {
     $('ons-sliding-menu').children().css('background-color', 'transparent');
 };
+
+setCarouselHeight = function() {
+    var stuff_height = $('ons-carousel-item .stuff').height();
+    var buttons_height = $('ons-carousel-item .actions').height();
+    var delivery_height = $('ons-carousel-item #delivery').height();
+    // var comment_height = $('ons-carousel-item .comment').height() + 15;
+    // var comment_num = $('ons-carousel-item .messages').find('.comment').length;
+    // var text_height = $('ons-carousel-item .comment_textarea').height();
+    var messages_height = $('ons-carousel-item .messages').height();
+    $('ons-carousel').css('height', stuff_height + buttons_height + delivery_height + messages_height + 50);
+};
+
 /*
 $(document).on("pageinit", '#page1', function() {
     $('#load_modal').show();
@@ -197,9 +209,10 @@ createCarousel = function(imgs) {
 */
 
 $(document).on("pageinit", '#page1', function() {
+    setCarouselHeight();
 
 //  createCarousel(images2);  
-  $("#main-pic", this).click(function() {
+  $("ons-carousel-item img", this).click(function() {
     $('#pic_modal').show();
 
   $('#close').click(function() {
@@ -225,7 +238,6 @@ $(document).on('pageinit', '#camera', function() {
 $(document).on('pageinit', '#description', function() {
     app.initDescription();
 });
-
 
 
 
