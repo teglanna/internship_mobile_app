@@ -13,14 +13,7 @@ var app = {
     temp : {
         DEVICE_WIDTH: window.innerWidth,
     },
-    // Application Constructor
-//    initialize: function() {
-//        this.bindEvents();
-//    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
+    
     geoEvents: function() {
         //Geoloc
         var self = this;
@@ -190,9 +183,6 @@ setCarouselHeight = function() {
     var delivery_height = $('ons-carousel-item #delivery').height();
     var messages_height = $('ons-carousel-item .messages').height();
     var compose_height = $('ons-carousel-item .compose').height();
-
-    // if (item is active){ carousel height is set }
-
     $('ons-carousel').css('height', stuff_height + buttons_height + delivery_height + messages_height + compose_height + 50);
 };
 

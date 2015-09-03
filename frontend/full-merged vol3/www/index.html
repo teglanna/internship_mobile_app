@@ -29,13 +29,13 @@
     <script type="text/javascript" src="js/pg.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 
-<body ng-app="SwipeBuy">
+<body >
 
 <!-- main page -->
 
     <ons-navigator var="myNavigator">
 
-        <ons-page id="page1">
+        <ons-page id="page1" ng-controller="StuffCtrl">
 
             <ons-modal var="modal" id="load_modal">
                 <ons-icon icon="ion-load-c" spin="true"></ons-icon>
@@ -96,7 +96,7 @@
 
                 </ons-modal>
 
-                <ons-carousel swipeable auto-scroll var="carousel_stuff" ng-controller="StuffCtrl">
+                <ons-carousel swipeable auto-scroll var="carousel_stuff">
                     <ons-carousel-item>
                         <div class="stuff">
                             <div class="stuff_price">{{ test }}</div>
@@ -110,7 +110,7 @@
 
                         <div class="navigation-bar actions">
                             <div class="navigation-bar__left">
-                                <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                                <ons-button modifier="chevron" onclick="myNavigator.pushPage('share.html')">
                                     Share
                                 </ons-button>
                             </div>
@@ -122,7 +122,7 @@
                             </div>
 
                             <div class="navigation-bar__right" modifier="chevron"
-                                 onclick="myNavigator.pushPage('page1.html')">
+                                 onclick="myNavigator.pushPage('bid.html')">
                                 <div class="button navigation-bar__line-height">Bid</div>
                             </div>
                         </div>
@@ -415,7 +415,6 @@
 
         </ons-page>
     </ons-navigator>
-</ons-template>
 <!--</script>-->
 
 
@@ -518,7 +517,7 @@
 
 <!-- success page -->
 
-<script type="text/ons-template" id="success.html">
+<ons-template id="success.html">
     <ons-page>
         <h1>Your item is now active!</h1>
 
@@ -526,7 +525,7 @@
 
         <p>Spread the word!</p>
     </ons-page>
-</script>
+</ons-template>
 
 <script type="text/ons-template" id="bid.html">
     <ons-page>
