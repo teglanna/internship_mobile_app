@@ -18,6 +18,11 @@ ons-carousel-item img {
 	margin-right: 10px;
 }
 
+.messages {
+	height: 300px;
+	overflow: scroll;
+}
+
 .comment {
 	width: 100%;
 	height: 120px;
@@ -36,12 +41,9 @@ ons-carousel-item img {
 	background-color: #78afae;
 }
 
-.comment_textarea {
-	height: 75px;
-}
-
 textarea.comment_write {
 	width: 100%;
+	font-size: 14px;
 }
 
 .comment_send {

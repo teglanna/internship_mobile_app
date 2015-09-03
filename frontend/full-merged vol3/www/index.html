@@ -83,12 +83,12 @@
     <ons-modal var="modal" id="pic_modal" style="background-color:rgba(0,0,0,0.9)">
       
       <ons-row>
-      <ons-col width="100%">
-            <img id="close" src="img/del2.png"/ style="float:right">
-      </ons-col>
-        </ons-row>
+        <ons-col width="100%">
+              <img id="close" src="img/del2.png"/ style="float:right">
+        </ons-col>
+      </ons-row>
 
-      <ons-carousel swipeable auto-scroll auto-refresh var="carousel" style="height: 1000px">
+      <ons-carousel swipeable auto-scroll auto-refresh var="carousel_gallery" fullscreen>
       
         <ons-carousel-item><img src="img/1.jpg"/></ons-carousel-item>
         <ons-carousel-item><img src="img/2.jpg"></ons-carousel-item>
@@ -99,11 +99,11 @@
 
     </ons-modal>
 
-<ons-carousel swipeable auto-scroll var="carousel">
+<ons-carousel swipeable auto-scroll var="carousel_stuff">
   <ons-carousel-item>
     <div class="stuff">
       <div class="stuff_price">1200Ft</div>
-      <img src="img/1.jpg"/>
+      <img src="img/stuff/1.jpg"/>
       <ul class="stuff_info">
         <li>1.2km</li>
         <li>2 comments</li>
@@ -153,17 +153,21 @@
         <p>blablbabla</p>
       </div>
     </div>
+  </div>
 
+    
+  <div class="compose">
     <ons-row class="comment_textarea">
       <ons-col width="80%"><textarea class="comment_write" rows="5" placeholder="write a comment"></textarea></ons-col>
       <ons-col width="20%"><ons-button class="comment_send">Send</ons-button></ons-col>
     </ons-row>
   </div>
+
   </ons-carousel-item>
   <ons-carousel-item>
     <div class="stuff">
     <div>1200Ft</div>
-    <img src="img/2.jpg"/>
+    <img src="img/stuff/2.jpg"/>
     <ul class="stuff_info">
       <li>1.3km</li>
       <li>3 comments</li>
@@ -223,18 +227,21 @@
         <p>blablbabla</p>
       </div>
     </div>
+  </div>
 
+  <div class="compose">
     <ons-row class="comment_textarea">
       <ons-col width="80%"><textarea class="comment_write" rows="5" placeholder="write a comment"></textarea></ons-col>
       <ons-col width="20%"><ons-button class="comment_send">Send</ons-button></ons-col>
     </ons-row>
   </div>
+
   </ons-carousel-item>
 
   <ons-carousel-item>
     <div class="stuff">
     <div>1200Ft</div>
-    <img src="img/3.jpg"/>
+    <img src="img/stuff/3.jpg"/>
     <ul class="stuff_info">
       <li>1.5km</li>
       <li>5 comments</li>
@@ -295,7 +302,6 @@
       </div>
     </div>
 
-    <div class="messages">
     <div class="comment">
       <div class="comment_user clearfix">
         <p>username</p>
@@ -315,18 +321,21 @@
         <p>blablbabla</p>
       </div>
     </div>
+  </div>
 
+  <div class="compose">
     <ons-row class="comment_textarea">
       <ons-col width="80%"><textarea class="comment_write" rows="5" placeholder="write a comment"></textarea></ons-col>
       <ons-col width="20%"><ons-button class="comment_send">Send</ons-button></ons-col>
     </ons-row>
   </div>
+
   </ons-carousel-item>
 
   <ons-carousel-item>
     <div class="stuff">
     <div>1200Ft</div>
-    <img src="img/4.jpg"/>
+    <img src="img/stuff/4.jpg"/>
     <ul class="stuff_info">
       <li>1.8km</li>
       <li>1 comments</li>
@@ -366,12 +375,15 @@
         <p>blablbabla</p>
       </div>
     </div>
+  </div>
 
+  <div class="compose">
     <ons-row class="comment_textarea">
       <ons-col width="80%"><textarea class="comment_write" rows="5" placeholder="write a comment"></textarea></ons-col>
       <ons-col width="20%"><ons-button class="comment_send">Send</ons-button></ons-col>
     </ons-row>
   </div>
+
   </ons-carousel-item>
 
 

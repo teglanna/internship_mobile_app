@@ -177,11 +177,12 @@ setCarouselHeight = function() {
     var stuff_height = $('ons-carousel-item .stuff').height();
     var buttons_height = $('ons-carousel-item .actions').height();
     var delivery_height = $('ons-carousel-item #delivery').height();
-    // var comment_height = $('ons-carousel-item .comment').height() + 15;
-    // var comment_num = $('ons-carousel-item .messages').find('.comment').length;
-    // var text_height = $('ons-carousel-item .comment_textarea').height();
     var messages_height = $('ons-carousel-item .messages').height();
-    $('ons-carousel').css('height', stuff_height + buttons_height + delivery_height + messages_height + 50);
+    var compose_height = $('ons-carousel-item .compose').height();
+
+    // if (item is active){ carousel height is set }
+
+    $('ons-carousel').css('height', stuff_height + buttons_height + delivery_height + messages_height + compose_height + 50);
 };
 
 /*
@@ -208,8 +209,8 @@ createCarousel = function(imgs) {
 */
 
 
-$(document).on("pageinit", '#page1', function() {
-    setCarouselHeight();
+$(document).on('pageinit', '#page1', function() {
+        setCarouselHeight();
 
 //    createCarousel(images2);  
     $("ons-carousel-item img", this).click(function() {
