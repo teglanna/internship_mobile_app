@@ -1,0 +1,203 @@
+[
+  {
+    "fields": {
+      "username": "alma",
+      "first_name": "",
+      "last_name": "",
+      "is_active": true,
+      "is_superuser": true,
+      "is_staff": true,
+      "last_login": "2015-09-03T12:41:09.315Z",
+      "groups": [],
+      "user_permissions": [],
+      "password": "pbkdf2_sha256$20000$BVeTXHlPvELT$Gdfy/DzMIuLwOHp87fTMQ6IM5JJsvmYybMd0FYrgc7U=",
+      "email": "alma@alma.com",
+      "date_joined": "2015-09-03T12:40:58.753Z"
+    },
+    "model": "auth.user",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "action": 0,
+      "user": 1,
+      "stuff": 1,
+      "modified": "2015-09-03T12:43:37.691Z",
+      "created": "2015-09-03T12:43:37.691Z"
+    },
+    "model": "swipebuy_app.swipeaction",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "action": 0,
+      "user": 1,
+      "stuff": 2,
+      "modified": "2015-09-03T12:43:45.060Z",
+      "created": "2015-09-03T12:43:45.060Z"
+    },
+    "model": "swipebuy_app.swipeaction",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "action": 0,
+      "user": 1,
+      "stuff": 3,
+      "modified": "2015-09-03T12:43:55.131Z",
+      "created": "2015-09-03T12:43:55.131Z"
+    },
+    "model": "swipebuy_app.swipeaction",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "action": 0,
+      "user": 1,
+      "stuff": 3,
+      "modified": "2015-09-03T12:44:01.907Z",
+      "created": "2015-09-03T12:44:01.907Z"
+    },
+    "model": "swipebuy_app.swipeaction",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "author": 1,
+      "text": "comment 1",
+      "bid": 1111,
+      "created": "2015-09-03T12:42:34.538Z",
+      "modified": "2015-09-03T12:42:34.538Z",
+      "stuff": 1,
+      "recipient": null
+    },
+    "model": "swipebuy_app.message",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "author": 1,
+      "text": "comment 1",
+      "bid": 1112,
+      "created": "2015-09-03T12:42:46.703Z",
+      "modified": "2015-09-03T12:42:46.703Z",
+      "stuff": 1,
+      "recipient": 1
+    },
+    "model": "swipebuy_app.message",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "author": 1,
+      "text": "lol1",
+      "bid": 12412,
+      "created": "2015-09-03T12:42:54.973Z",
+      "modified": "2015-09-03T12:42:54.973Z",
+      "stuff": 2,
+      "recipient": null
+    },
+    "model": "swipebuy_app.message",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "author": 1,
+      "text": "lol2",
+      "bid": 234,
+      "created": "2015-09-03T12:43:04.333Z",
+      "modified": "2015-09-03T12:43:04.333Z",
+      "stuff": 2,
+      "recipient": 1
+    },
+    "model": "swipebuy_app.message",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "author": 1,
+      "text": "sdafsdf",
+      "bid": 2344,
+      "created": "2015-09-03T12:43:12.886Z",
+      "modified": "2015-09-03T12:43:12.886Z",
+      "stuff": 3,
+      "recipient": 1
+    },
+    "model": "swipebuy_app.message",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "author": 1,
+      "text": "lol4",
+      "bid": 9809,
+      "created": "2015-09-03T12:43:27.192Z",
+      "modified": "2015-09-03T12:43:27.192Z",
+      "stuff": 3,
+      "recipient": null
+    },
+    "model": "swipebuy_app.message",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "description": "test",
+      "created": "2015-09-03T12:41:30.449Z",
+      "price": 111,
+      "modified": "2015-09-03T12:41:30.449Z",
+      "main_img": null,
+      "delivery": false,
+      "pickup": true,
+      "user": 1,
+      "active": true,
+      "buy_time": "2015-09-03T12:41:28Z",
+      "location": "SRID=4326;POINT (19.2041015625000000 48.7655639648439987)"
+    },
+    "model": "swipebuy_app.stuff",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "description": "test2",
+      "created": "2015-09-03T12:41:55.543Z",
+      "price": 1112,
+      "modified": "2015-09-03T12:41:55.543Z",
+      "main_img": null,
+      "delivery": true,
+      "pickup": false,
+      "user": 1,
+      "active": true,
+      "buy_time": "2015-09-03T12:41:46Z",
+      "location": "SRID=4326;POINT (18.5449218750000000 46.7550659179689987)"
+    },
+    "model": "swipebuy_app.stuff",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "description": "test3",
+      "created": "2015-09-03T12:42:14.223Z",
+      "price": 222,
+      "modified": "2015-09-03T12:42:14.223Z",
+      "main_img": null,
+      "delivery": false,
+      "pickup": false,
+      "user": 1,
+      "active": true,
+      "buy_time": "2015-09-03T12:42:12Z",
+      "location": "SRID=4326;POINT (20.0390625000000000 47.4581909179689987)"
+    },
+    "model": "swipebuy_app.stuff",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "user": 1,
+      "location": "SRID=4326;POINT (19.0832519531250000 47.4911499023439987)",
+      "modified": "2015-09-03T12:44:32.705Z",
+      "created": "2015-09-03T12:44:32.705Z"
+    },
+    "model": "swipebuy_app.checkin",
+    "pk": 1
+  }
+]
