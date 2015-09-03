@@ -1,8 +1,8 @@
 var SwipeBuy = ons.bootstrap('SwipeBuy', ['onsen']);
 
-//SwipeBuy.controller('StuffCtrl', function ($scope) {
-//    $scope.test = "hello";
-//});
+SwipeBuy.controller('StuffCtrl', function ($scope) {
+   $scope.test = "hello";
+});
 //SwipeBuy.controller('PageController', function ($scope) {
 //    ons.ready(function () {
 //        // Init code here

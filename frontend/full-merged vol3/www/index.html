@@ -28,17 +28,10 @@
     <!--<script type="text/javascript" src="CameraPreview.js"></script>-->
     <script type="text/javascript" src="js/pg.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+
 <body ng-app="SwipeBuy">
 
 <!-- main page -->
-
-<ons-sliding-menu main-page="page1.html" menu-page="menu.html" side="right" swipeable=False var="menu">
-</ons-sliding-menu>
-
-
-<!-- load page -->
-<ons-template id="page1.html">
-<!--< type="text/ons-template" id="page1.html">-->
 
     <ons-navigator var="myNavigator">
 
@@ -92,7 +85,7 @@
                         </ons-col>
                     </ons-row>
 
-                    <ons-carousel swipeable auto-scroll auto-refresh var="carousel_gallery" fullscreen>
+                    <ons-carousel swipeable auto-scroll auto-refresh var="carousel_gallery" style="height:1000px">
 
                         <ons-carousel-item><img src="img/1.jpg"/></ons-carousel-item>
                         <ons-carousel-item><img src="img/2.jpg"></ons-carousel-item>
@@ -103,13 +96,12 @@
 
                 </ons-modal>
 
-                <ons-carousel swipeable auto-scroll var="carousel_stuff">
+                <ons-carousel swipeable auto-scroll var="carousel_stuff" ng-controller="StuffCtrl">
                     <ons-carousel-item>
                         <div class="stuff">
-                            <div class="stuff_price">1200Ft</div>
+                            <div class="stuff_price">{{ test }}</div>
                             <img src="img/stuff/1.jpg"/>
                             <ul class="stuff_info">
-                                <li>{{ test }}</li>
                                 <li>1.2km</li>
                                 <li>2 comments</li>
                                 <li>88 views</li>
@@ -426,32 +418,7 @@
 </ons-template>
 <!--</script>-->
 
-<!-- menu page -->
 
-<!--<ons-template id="menu.html">-->
-    <!--<ons-list>-->
-        <!--<ons-list-item modifier="chevron" onclick="menu.setMainPage('page1.html', {closeMenu: true})">-->
-            <!--Home-->
-        <!--</ons-list-item>-->
-        <!--<ons-list-item modifier="chevron" onclick="menu.setMainPage('camera.html', {closeMenu: true})">-->
-            <!--Sell-->
-        <!--</ons-list-item>-->
-    <!--</ons-list>-->
-<!--<ons-template>-->
-
-<!-- home page -->
-<!--
-<script type="text/ons-template" id="home_page.html">
-  <ons-page id="home_page">
-    <ons-toolbar>
-      <div class="right">
-        <ons-toolbar-button ng-click="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
-      </div>
-      <div class="center">Picture</div>
-    </ons-toolbar>
-</ons-page>
-</script>
--->
 
 <!-- camera page -->
 
