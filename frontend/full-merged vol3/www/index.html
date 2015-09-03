@@ -1,410 +1,443 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-<!--        
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
--->        
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" href="css/onsenui.css">
-        <link rel="stylesheet" href="css/onsen-css-components.css">
-        <link rel="stylesheet" type="text/css" href="css/pg.css">
-        <link rel="stylesheet" type="text/css" href="css/pg_light.min.css">
-        <link rel="stylesheet" href="css/camera.css">
-        <link rel="stylesheet" href="css/custom_desc.css">
-        <link rel="stylesheet" href="css/carousel.css">
+<head>
+    <meta charset="utf-8"/>
+    <!--
+            <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    -->
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+    <link rel="stylesheet" href="css/onsenui.css">
+    <link rel="stylesheet" href="css/onsen-css-components.css">
+    <link rel="stylesheet" type="text/css" href="css/pg.css">
+    <link rel="stylesheet" type="text/css" href="css/pg_light.min.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="css/custom_desc.css">
+    <link rel="stylesheet" href="css/carousel.css">
 
-<!--        <link rel="stylesheet" href="css/diag.css"> -->
-        <title>Camera Slide Description</title>
-        <script type="text/javascript" src="js/angular/angular.js"></script>
-        <script type="text/javascript" src="js/jquery.2.min.js"></script>
-        <script type="text/javascript" src="js/onsenui.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="cordova_plugins.js"></script>
-        <script type="text/javascript" src="CameraPreview.js"></script>
-        <script type="text/javascript" src="js/pg.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-<body>
+    <!--        <link rel="stylesheet" href="css/diag.css"> -->
+    <title>Camera Slide Description</title>
+    <script type="text/javascript" src="js/angular/angular.js"></script>
+    <script type="text/javascript" src="js/jquery.2.min.js"></script>
+    <script type="text/javascript" src="js/onsenui.js"></script>
+    <!--<script type="text/javascript" src="js/cordova.js"></script>-->
+    <!--<script type="text/javascript" src="js/cordova_plugins.js"></script>-->
+    <!--<script type="text/javascript" src="CameraPreview.js"></script>-->
+    <script type="text/javascript" src="js/pg.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+<body ng-app="SwipeBuy">
 
 <!-- main page -->
-   
+
 <ons-sliding-menu main-page="page1.html" menu-page="menu.html" side="right" swipeable=False var="menu">
 </ons-sliding-menu>
 
 
 <!-- load page -->
+<ons-template id="page1.html">
+<!--< type="text/ons-template" id="page1.html">-->
+
+    <ons-navigator var="myNavigator">
+
+        <ons-page id="page1">
+
+            <ons-modal var="modal" id="load_modal">
+                <ons-icon icon="ion-load-c" spin="true"></ons-icon>
+                Loading SwipeBuy
+            </ons-modal>
+
+            <!--
+                <h2>State</h2>
+                <ul id="state">
+                    <li class="location">
+                        <span class="name">Location</span>
+                        <span class="state on">ENABLED</span>
+                        <span class="state off">DISABLED</span>
+                    </li>
+                </ul>
+                <div id="settings">
+                    <button id="do-check">Re-check state</button>
+                </div>*/
+            -->
+
+            <div id="disabled">
+                <p>
+                    'Whoops, your phones "Location Service" shall be turned on so we can find the stuff close to your
+                    location. Enable and:'
+                </p>
+
+                <div id="settings">
+                    <button id="do-check">Re-check state</button>
+                </div>
+            </div>
+
+            <div id="home" >
+                <ons-toolbar>
+                    <div class="right">
+                        <ons-toolbar-button ng-click="menu.toggleMenu()">
+                            <ons-icon icon="fa-bars"></ons-icon>
+                        </ons-toolbar-button>
+                    </div>
+                    <div class="center">Picture</div>
+                </ons-toolbar>
+
+                <ons-modal var="modal" id="pic_modal" style="background-color:rgba(0,0,0,0.9)">
+
+                    <ons-row>
+                        <ons-col width="100%">
+                            <img id="close" src="img/del2.png"/ style="float:right">
+                        </ons-col>
+                    </ons-row>
+
+                    <ons-carousel swipeable auto-scroll auto-refresh var="carousel_gallery" fullscreen>
+
+                        <ons-carousel-item><img src="img/1.jpg"/></ons-carousel-item>
+                        <ons-carousel-item><img src="img/2.jpg"></ons-carousel-item>
+                        <ons-carousel-item><img src="img/3.jpg"/></ons-carousel-item>
+                        <ons-carousel-item><img src="img/4.jpg"></ons-carousel-item>
+
+                    </ons-carousel>
+
+                </ons-modal>
+
+                <ons-carousel swipeable auto-scroll var="carousel_stuff">
+                    <ons-carousel-item>
+                        <div class="stuff">
+                            <div class="stuff_price">1200Ft</div>
+                            <img src="img/stuff/1.jpg"/>
+                            <ul class="stuff_info">
+                                <li>{{ test }}</li>
+                                <li>1.2km</li>
+                                <li>2 comments</li>
+                                <li>88 views</li>
+                            </ul>
+                        </div>
+
+                        <div class="navigation-bar actions">
+                            <div class="navigation-bar__left">
+                                <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                                    Share
+                                </ons-button>
+                            </div>
+
+                            <div class="navigation-bar__center">
+                                <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                                    Buy
+                                </ons-button>
+                            </div>
+
+                            <div class="navigation-bar__right" modifier="chevron"
+                                 onclick="myNavigator.pushPage('page1.html')">
+                                <div class="button navigation-bar__line-height">Bid</div>
+                            </div>
+                        </div>
+
+                        <div id="delivery">
+                            <p>Offering Pickup & Delivery</p>
+                        </div>
+
+                        <div class="messages">
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
+
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
+
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
+
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
+                        </div>
 
 
-<script type="text/ons-template" id="page1.html">
+                        <div class="compose">
+                            <ons-row class="comment_textarea">
+                                <ons-col width="80%"><textarea class="comment_write" rows="5"
+                                                               placeholder="write a comment"></textarea></ons-col>
+                                <ons-col width="20%">
+                                    <ons-button class="comment_send">Send</ons-button>
+                                </ons-col>
+                            </ons-row>
+                        </div>
 
-<ons-navigator var="myNavigator">
+                    </ons-carousel-item>
+                    <ons-carousel-item>
+                        <div class="stuff">
+                            <div>1200Ft</div>
+                            <img src="img/stuff/2.jpg"/>
+                            <ul class="stuff_info">
+                                <li>1.3km</li>
+                                <li>3 comments</li>
+                                <li>38 views</li>
+                            </ul>
+                        </div>
 
-  <ons-page id="page1">
+                        <div class="navigation-bar actions">
+                            <div class="navigation-bar__left">
+                                <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                                    Share
+                                </ons-button>
+                            </div>
 
-  <ons-modal var="modal" id="load_modal">
-    <ons-icon icon="ion-load-c" spin="true"></ons-icon>
-    Loading SwipeBuy
-  </ons-modal>
+                            <div class="navigation-bar__center">
+                                <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                                    Buy
+                                </ons-button>
+                            </div>
 
-<!--
-    <h2>State</h2>
-    <ul id="state">
-        <li class="location">
-            <span class="name">Location</span>
-            <span class="state on">ENABLED</span>
-            <span class="state off">DISABLED</span>
-        </li>
-    </ul>
-    <div id="settings">
-        <button id="do-check">Re-check state</button>
-    </div>*/
--->
+                            <div class="navigation-bar__right" modifier="chevron"
+                                 onclick="myNavigator.pushPage('page1.html')">
+                                <div class="button navigation-bar__line-height">Bid</div>
+                            </div>
+                        </div>
 
-    <div id="disabled">
-      <p>
-        'Whoops, your phones "Location Service" shall be turned on so we can find the stuff close to your location. Enable and:'
-      </p>
-      <div id="settings">
-        <button id="do-check">Re-check state</button>
-      </div>
-    </div>
+                        <div id="delivery">
+                            <p>Offering Pickup & Delivery</p>
+                        </div>
 
-    <div id="home">
-      <ons-toolbar>
-        <div class="right">
-          <ons-toolbar-button ng-click="menu.toggleMenu()"><ons-icon icon="fa-bars"></ons-icon></ons-toolbar-button>
-        </div>
-        <div class="center">Picture</div>
-      </ons-toolbar>
+                        <div class="messages">
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
 
-    <ons-modal var="modal" id="pic_modal" style="background-color:rgba(0,0,0,0.9)">
-      
-      <ons-row>
-        <ons-col width="100%">
-              <img id="close" src="img/del2.png"/ style="float:right">
-        </ons-col>
-      </ons-row>
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
 
-      <ons-carousel swipeable auto-scroll auto-refresh var="carousel_gallery" fullscreen>
-      
-        <ons-carousel-item><img src="img/1.jpg"/></ons-carousel-item>
-        <ons-carousel-item><img src="img/2.jpg"></ons-carousel-item>
-        <ons-carousel-item><img src="img/3.jpg"/></ons-carousel-item>
-        <ons-carousel-item><img src="img/4.jpg"></ons-carousel-item>
-        
-      </ons-carousel>
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
 
-    </ons-modal>
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
 
-<ons-carousel swipeable auto-scroll var="carousel_stuff">
-  <ons-carousel-item>
-    <div class="stuff">
-      <div class="stuff_price">1200Ft</div>
-      <img src="img/stuff/1.jpg"/>
-      <ul class="stuff_info">
-        <li>1.2km</li>
-        <li>2 comments</li>
-        <li>88 views</li>
-      </ul>
-    </div>
-    
-    <div class="navigation-bar actions">
-      <div class="navigation-bar__left">
-        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-          Share
-        </ons-button>
-      </div>
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
 
-      <div class="navigation-bar__center"> 
-        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-          Buy
-        </ons-button>
-      </div>
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
+                        </div>
 
-      <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('page1.html')">
-        <div class="button navigation-bar__line-height">Bid</div>
-      </div>
-    </div>
+                        <div class="compose">
+                            <ons-row class="comment_textarea">
+                                <ons-col width="80%"><textarea class="comment_write" rows="5"
+                                                               placeholder="write a comment"></textarea></ons-col>
+                                <ons-col width="20%">
+                                    <ons-button class="comment_send">Send</ons-button>
+                                </ons-col>
+                            </ons-row>
+                        </div>
 
-    <div id="delivery">
-      <p>Offering Pickup & Delivery</p>
-    </div>
+                    </ons-carousel-item>
 
-  <div class="messages">
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
+                    <ons-carousel-item>
+                        <div class="stuff">
+                            <div>1200Ft</div>
+                            <img src="img/stuff/3.jpg"/>
+                            <ul class="stuff_info">
+                                <li>1.5km</li>
+                                <li>5 comments</li>
+                                <li>128 views</li>
+                            </ul>
+                        </div>
 
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
-  </div>
+                        <div class="navigation-bar actions">
+                            <div class="navigation-bar__left">
+                                <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                                    Share
+                                </ons-button>
+                            </div>
 
-    
-  <div class="compose">
-    <ons-row class="comment_textarea">
-      <ons-col width="80%"><textarea class="comment_write" rows="5" placeholder="write a comment"></textarea></ons-col>
-      <ons-col width="20%"><ons-button class="comment_send">Send</ons-button></ons-col>
-    </ons-row>
-  </div>
+                            <div class="navigation-bar__center">
+                                <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                                    Buy
+                                </ons-button>
+                            </div>
 
-  </ons-carousel-item>
-  <ons-carousel-item>
-    <div class="stuff">
-    <div>1200Ft</div>
-    <img src="img/stuff/2.jpg"/>
-    <ul class="stuff_info">
-      <li>1.3km</li>
-      <li>3 comments</li>
-      <li>38 views</li>
-    </ul>
-    </div>
+                            <div class="navigation-bar__right" modifier="chevron"
+                                 onclick="myNavigator.pushPage('page1.html')">
+                                <div class="button navigation-bar__line-height">Bid</div>
+                            </div>
+                        </div>
 
-    <div class="navigation-bar actions">
-      <div class="navigation-bar__left">
-        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-          Share
-        </ons-button>
-      </div>
+                        <div id="delivery">
+                            <p>Offering Pickup & Delivery</p>
+                        </div>
 
-      <div class="navigation-bar__center"> 
-        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-          Buy
-        </ons-button>
-      </div>
+                        <div class="messages">
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
 
-      <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('page1.html')">
-        <div class="button navigation-bar__line-height">Bid</div>
-      </div>
-    </div>
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
 
-    <div id="delivery">
-      <p>Offering Pickup & Delivery</p>
-    </div>
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
 
-  <div class="messages">
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
-    
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
 
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
-  </div>
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
 
-  <div class="compose">
-    <ons-row class="comment_textarea">
-      <ons-col width="80%"><textarea class="comment_write" rows="5" placeholder="write a comment"></textarea></ons-col>
-      <ons-col width="20%"><ons-button class="comment_send">Send</ons-button></ons-col>
-    </ons-row>
-  </div>
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
 
-  </ons-carousel-item>
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
 
-  <ons-carousel-item>
-    <div class="stuff">
-    <div>1200Ft</div>
-    <img src="img/stuff/3.jpg"/>
-    <ul class="stuff_info">
-      <li>1.5km</li>
-      <li>5 comments</li>
-      <li>128 views</li>
-    </ul>
-    </div>
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
 
-    <div class="navigation-bar actions">
-      <div class="navigation-bar__left">
-        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-          Share
-        </ons-button>
-      </div>
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
 
-      <div class="navigation-bar__center"> 
-        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-          Buy
-        </ons-button>
-      </div>
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
+                        </div>
 
-      <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('page1.html')">
-        <div class="button navigation-bar__line-height">Bid</div>
-      </div>
-    </div>
+                        <div class="compose">
+                            <ons-row class="comment_textarea">
+                                <ons-col width="80%"><textarea class="comment_write" rows="5"
+                                                               placeholder="write a comment"></textarea></ons-col>
+                                <ons-col width="20%">
+                                    <ons-button class="comment_send">Send</ons-button>
+                                </ons-col>
+                            </ons-row>
+                        </div>
 
-    <div id="delivery">
-      <p>Offering Pickup & Delivery</p>
-    </div>
+                    </ons-carousel-item>
 
-  <div class="messages">
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
-    
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
+                    <ons-carousel-item>
+                        <div class="stuff">
+                            <div>1200Ft</div>
+                            <img src="img/stuff/4.jpg"/>
+                            <ul class="stuff_info">
+                                <li>1.8km</li>
+                                <li>1 comments</li>
+                                <li>18 views</li>
+                            </ul>
+                        </div>
 
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
+                        <div class="navigation-bar actions">
+                            <div class="navigation-bar__left">
+                                <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                                    Share
+                                </ons-button>
+                            </div>
 
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
-    
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
-  </div>
+                            <div class="navigation-bar__center">
+                                <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                                    Buy
+                                </ons-button>
+                            </div>
 
-  <div class="compose">
-    <ons-row class="comment_textarea">
-      <ons-col width="80%"><textarea class="comment_write" rows="5" placeholder="write a comment"></textarea></ons-col>
-      <ons-col width="20%"><ons-button class="comment_send">Send</ons-button></ons-col>
-    </ons-row>
-  </div>
+                            <div class="navigation-bar__right" modifier="chevron"
+                                 onclick="myNavigator.pushPage('page1.html')">
+                                <div class="button navigation-bar__line-height">Bid</div>
+                            </div>
+                        </div>
 
-  </ons-carousel-item>
+                        <div id="delivery">
+                            <p>Offering Pickup & Delivery</p>
+                        </div>
 
-  <ons-carousel-item>
-    <div class="stuff">
-    <div>1200Ft</div>
-    <img src="img/stuff/4.jpg"/>
-    <ul class="stuff_info">
-      <li>1.8km</li>
-      <li>1 comments</li>
-      <li>18 views</li>
-    </ul>
-    </div>
+                        <div class="messages">
+                            <div class="comment">
+                                <div class="comment_user clearfix">
+                                    <p>username</p>
 
-    <div class="navigation-bar actions">
-      <div class="navigation-bar__left">
-        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-          Share
-        </ons-button>
-      </div>
+                                    <p>10 min ago</p>
+                                </div>
+                                <div class="comment_text">
+                                    <p>blablbabla</p>
+                                </div>
+                            </div>
+                        </div>
 
-      <div class="navigation-bar__center"> 
-        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-          Buy
-        </ons-button>
-      </div>
+                        <div class="compose">
+                            <ons-row class="comment_textarea">
+                                <ons-col width="80%"><textarea class="comment_write" rows="5"
+                                                               placeholder="write a comment"></textarea></ons-col>
+                                <ons-col width="20%">
+                                    <ons-button class="comment_send">Send</ons-button>
+                                </ons-col>
+                            </ons-row>
+                        </div>
 
-      <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('page1.html')">
-        <div class="button navigation-bar__line-height">Bid</div>
-      </div>
-    </div>
-
-    <div id="delivery">
-      <p>Offering Pickup & Delivery</p>
-    </div>
-
-  <div class="messages">
-    <div class="comment">
-      <div class="comment_user clearfix">
-        <p>username</p>
-        <p>10 min ago</p>
-      </div>
-      <div class="comment_text">
-        <p>blablbabla</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="compose">
-    <ons-row class="comment_textarea">
-      <ons-col width="80%"><textarea class="comment_write" rows="5" placeholder="write a comment"></textarea></ons-col>
-      <ons-col width="20%"><ons-button class="comment_send">Send</ons-button></ons-col>
-    </ons-row>
-  </div>
-
-  </ons-carousel-item>
+                    </ons-carousel-item>
 
 
-    </ons-carousel>
+                </ons-carousel>
 
-  </ons-page>
-  </ons-navigator>
-</script>
+        </ons-page>
+    </ons-navigator>
+</ons-template>
+<!--</script>-->
 
 <!-- menu page -->
 
-<script type="text/ons-template" id="menu.html">
-  <ons-list>
-    <ons-list-item modifier="chevron" onclick="menu.setMainPage('page1.html', {closeMenu: true})">
-      Home
-    </ons-list-item> 
-    <ons-list-item modifier="chevron" onclick="menu.setMainPage('camera.html', {closeMenu: true})">
-      Sell
-    </ons-list-item>
-  </ons-list>
-</script>
+<!--<ons-template id="menu.html">-->
+    <!--<ons-list>-->
+        <!--<ons-list-item modifier="chevron" onclick="menu.setMainPage('page1.html', {closeMenu: true})">-->
+            <!--Home-->
+        <!--</ons-list-item>-->
+        <!--<ons-list-item modifier="chevron" onclick="menu.setMainPage('camera.html', {closeMenu: true})">-->
+            <!--Sell-->
+        <!--</ons-list-item>-->
+    <!--</ons-list>-->
+<!--<ons-template>-->
 
 <!-- home page -->
 <!--
@@ -424,25 +457,28 @@
 
 
 <script type="text/ons-template" id="camera.html">
-<ons-navigator var="myNavigator" style="background-color: transparent">
-    <ons-page id="camera" style="background-color: transparent">
-    <div id="camera_box">
-      <div class="controls">
-        <div class="block">
-            <ons-button id="takePictureButton" modifier="chevron" onclick="myNavigator.pushPage('slide.html')">Snap</ons-button>
-        </div>
-        <div class="block">
-              <ons-button modifier="chevron" onclick="myNavigator.pushPage('home.html')">Back</ons-button>
-          </div>
-      </div>
-      <div class="pictures" style="display:none;">
-        <p><img id="previewPicture" width="200"/></p>
-        <p><img id="originalPicture" width="200"/></p>
-      </div>
-    </div>
+    <ons-navigator var="myNavigator" style="background-color: transparent">
+        <ons-page id="camera" style="background-color: transparent">
+            <div id="camera_box">
+                <div class="controls">
+                    <div class="block">
+                        <ons-button id="takePictureButton" modifier="chevron"
+                                    onclick="myNavigator.pushPage('slide.html')">Snap
+                        </ons-button>
+                    </div>
+                    <div class="block">
+                        <ons-button modifier="chevron" onclick="myNavigator.pushPage('home.html')">Back</ons-button>
+                    </div>
+                </div>
+                <div class="pictures" style="display:none;">
+                    <p><img id="previewPicture" width="200"/></p>
 
-  </ons-page>
-  </ons-navigator>
+                    <p><img id="originalPicture" width="200"/></p>
+                </div>
+            </div>
+
+        </ons-page>
+    </ons-navigator>
 </script>
 
 <!-- slide page -->
@@ -450,21 +486,21 @@
 
 <script type="text/ons-template" id="slide.html">
     <ons-page id="slide">
-      <ul class="pgwSlideshow"></ul>
+        <ul class="pgwSlideshow"></ul>
 
-    <div class="navigation-bar">
-      <div class="navigation-bar__left">
-        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-          Add More
-        </ons-button>
-      </div>
+        <div class="navigation-bar">
+            <div class="navigation-bar__left">
+                <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                    Add More
+                </ons-button>
+            </div>
 
-      <div class="navigation-bar__center"> </div>
+            <div class="navigation-bar__center"></div>
 
-      <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('description.html')">
-        <div class="button navigation-bar__line-height">Next</div>
-      </div>
-    </div>
+            <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('description.html')">
+                <div class="button navigation-bar__line-height">Next</div>
+            </div>
+        </div>
     </ons-page>
 </script>
 
@@ -475,36 +511,41 @@
 <script type="text/ons-template" id="description.html">
     <ons-page id="description">
         <div>
-        <p id="price_title">Price</p>
-        <ons-row>
-            <ons-col width="15%" class="huf">HUF</ons-col>
-            <ons-col width="45%"><textarea class="textarea price" rows="1" placeholder="Price"></textarea></ons-col>
-        </ons-row>
+            <p id="price_title">Price</p>
+            <ons-row>
+                <ons-col width="15%" class="huf">HUF</ons-col>
+                <ons-col width="45%"><textarea class="textarea price" rows="1" placeholder="Price"></textarea></ons-col>
+            </ons-row>
         </div>
         <ons-row>
-            <ons-col width="100%"><textarea class="textarea description" rows="5" placeholder="Description"></textarea></ons-col>
+            <ons-col width="100%"><textarea class="textarea description" rows="5" placeholder="Description"></textarea>
+            </ons-col>
         </ons-row>
         <div>
             <p>Delivery</p>
             <label class="checkbox">
-              <input type="checkbox" checked="checked">
-              <div class="checkbox__checkmark"></div>
-              Buyer can pickup
+                <input type="checkbox" checked="checked">
+
+                <div class="checkbox__checkmark"></div>
+                Buyer can pickup
             </label>
             <br>
             <label class="checkbox">
-              <input type="checkbox" checked="checked">
-              <div class="checkbox__checkmark"></div>
-              I can offer delivery
+                <input type="checkbox" checked="checked">
+
+                <div class="checkbox__checkmark"></div>
+                I can offer delivery
             </label>
         </div>
         <p>Actual image</p>
+
         <div class="desc_images">
             <div class="wrapper">
             </div>
         </div>
         <div class="submit">
-            <ons-button class="button" modifier="chevron" onclick="myNavigator.pushPage('success.html')">Post</ons-button>
+            <ons-button class="button" modifier="chevron" onclick="myNavigator.pushPage('success.html')">Post
+            </ons-button>
         </div>
 </script>
 
@@ -513,67 +554,69 @@
 <script type="text/ons-template" id="success.html">
     <ons-page>
         <h1>Your item is now active!</h1>
+
         <p>Good luck!</p>
+
         <p>Spread the word!</p>
     </ons-page>
 </script>
 
 <script type="text/ons-template" id="bid.html">
     <ons-page>
-     <h1>BID</h1>
+        <h1>BID</h1>
     </ons-page>
 </script>
 
 <script type="text/ons-template" id="buy.html">
     <ons-page>
-    <div style="height:300px"></div>
-     <ons-row>
-        <ons-col width="50%">BUY</ons-col>
-        <ons-col width="50%">1200Ft</div></ons-col>
-      </ons-row>
-     <div style="height:300px"></div>
+        <div style="height:300px"></div>
+        <ons-row>
+            <ons-col width="50%">BUY</ons-col>
+            <ons-col width="50%">1200Ft</div></ons-col>
+        </ons-row>
+        <div style="height:300px"></div>
 
-     <ons-bottom-toolbar>
-         <div class="navigation-bar">
-          <div class="navigation-bar__left">
-            <ons-button modifier="chevron" onclick="myNavigator.popPage()">
-              Cancel
-            </ons-button>
-          </div>
+        <ons-bottom-toolbar>
+            <div class="navigation-bar">
+                <div class="navigation-bar__left">
+                    <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                        Cancel
+                    </ons-button>
+                </div>
 
-          <div class="navigation-bar__center"> </div>
+                <div class="navigation-bar__center"></div>
 
-          <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('request.html')">
-            <div class="button navigation-bar__line-height">Send Request</div>
-          </div>
-        </div>
-        
-      </ons-toolbar>
+                <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('request.html')">
+                    <div class="button navigation-bar__line-height">Send Request</div>
+                </div>
+            </div>
 
-<!--
-  <div class="bottom-bar" style="text-align: center">
-      <div class="bottom-bar__line-height">
-        Bottom Toolbar
-      </div>
-  </div>
--->  
+            </ons-toolbar>
+
+            <!--
+              <div class="bottom-bar" style="text-align: center">
+                  <div class="bottom-bar__line-height">
+                    Bottom Toolbar
+                  </div>
+              </div>
+            -->
     </ons-page>
 </script>
 
 <script type="text/ons-template" id="request.html">
     <ons-page>
-      <div style="height:300px"></div>
-      <div>
-      <p>
-      Request sent!</br>
-      You will receive the answer directly in your mail.
-      </p>
-      </div>
+        <div style="height:300px"></div>
+        <div>
+            <p>
+                Request sent!</br>
+                You will receive the answer directly in your mail.
+            </p>
+        </div>
 
 
-     <h1>req</h1>
+        <h1>req</h1>
     </ons-page>
 </script>
 
-    </body>
+</body>
 </html>

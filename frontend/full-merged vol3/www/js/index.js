@@ -1,3 +1,14 @@
+var SwipeBuy = ons.bootstrap('SwipeBuy', ['onsen']);
+
+//SwipeBuy.controller('StuffCtrl', function ($scope) {
+//    $scope.test = "hello";
+//});
+//SwipeBuy.controller('PageController', function ($scope) {
+//    ons.ready(function () {
+//        // Init code here
+//    });
+//});
+
 var app = {
     temp : {
         DEVICE_WIDTH: window.innerWidth,
@@ -123,7 +134,7 @@ var app = {
 
 };
 
-ons.bootstrap();
+//ons.bootstrap();
 
 $(function(){
     setTimeout(function() {
@@ -204,7 +215,7 @@ createCarousel = function(imgs) {
         $("ons-modal#pic_modal ons-carousel").append('<ons-carousel-item><img src=' + imageURL + '></ons-carousel-item>');
         
     }
-    
+
 };
 */
 
@@ -240,8 +251,6 @@ $(document).on('pageinit', '#camera', function() {
 $(document).on('pageinit', '#description', function() {
     app.initDescription();
 });
-
-
 
 
 
