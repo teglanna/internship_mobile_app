@@ -14,3 +14,4 @@ pytest-django==2.8.0
 pytest-xdist==1.11
 djangorestframework
 ipdb
+django-cors-headers
