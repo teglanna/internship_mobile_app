@@ -39,11 +39,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.gis',
     'rest_framework',
+    'corsheaders',
     'swipebuy_app',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -117,4 +119,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-PROXIMITY_DEFAULT = 15 * 1000 # 15km Budapest radius
+PROXIMITY_DEFAULT = 15 * 100000000 # 15km Budapest radius
+
+if DEBUG:
+    CORS_ORIGIN_ALLOW_ALL = True
