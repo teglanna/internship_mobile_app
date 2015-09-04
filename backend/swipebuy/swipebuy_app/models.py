@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.gis.db import models
+from django.contrib.gis.geos import Point
 from django.contrib.gis.measure import D
 from django.contrib.auth.models import User
 
@@ -27,7 +28,7 @@ class StuffManager(models.GeoManager):
     :location: reference location
     :proximity: distance radius limit
     """
-    def sort_by_distance(self, location, proximity=settings.PROXIMITY_DEFAULT):
+    def sort_by_distance(self, location=Point(1.232433, 1.2323232), proximity=settings.PROXIMITY_DEFAULT):
         return self.get_queryset().filter(location__distance_lte=(location, D(m=proximity))).distance(location).order_by('distance')
 
 
