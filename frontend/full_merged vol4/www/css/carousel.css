@@ -19,8 +19,7 @@ ons-carousel-item img {
 }
 
 .messages {
-	height: 300px;
-	overflow: scroll;
+	height: 200px;
 }
 
 .comment {
@@ -48,4 +47,10 @@ textarea.comment_write {
 
 .comment_send {
 	margin-left: 10px;
+}
+
+.pic_modal_wrapper,
+.comments_modal_wrapper {
+	width: 90%;
+	margin: 0 auto;
 }

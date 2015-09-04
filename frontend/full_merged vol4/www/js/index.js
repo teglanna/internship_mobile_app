@@ -231,12 +231,20 @@ $(document).on('pageinit', '#page1', function() {
     $("ons-carousel-item img", this).click(function() {
         $('#pic_modal').show();
 
-        $('#close').click(function() {
+        $('.close').click(function() {
             $('#pic_modal').hide();
         });
 
 //        carousel.refresh();        
   });
+
+    $('.show_comments').click(function(){
+        $('#comments_modal').show();
+
+        $('.close').click(function() {
+            $('#comments_modal').hide();
+        });
+    });
 
     $('#buy_button').click(function() {   
         myNavigator.pushPage('buybid.html');

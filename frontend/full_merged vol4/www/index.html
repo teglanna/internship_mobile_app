@@ -53,41 +53,15 @@
             </div>
 {{ test }}
             <div id="home">
-            <ons-toolbar>
-                <div class="right">
-                  <ons-toolbar-button modifier="chevron" onclick="myNavigator.pushPage('camera.html')">Sell&#10140;</ons-toolbar-button>
-                </div>         
-          </ons-toolbar>
-<!--                <ons-toolbar>
+                <ons-toolbar>
                     <div class="right">
-                        <ons-toolbar-button ng-click="menu.toggleMenu()">
-                            <ons-icon icon="fa-bars"></ons-icon>
-                        </ons-toolbar-button>
-                    </div>
-                    <div class="center">Picture</div>
+                      <ons-toolbar-button modifier="chevron" onclick="myNavigator.pushPage('camera.html')">Sell&#10140;</ons-toolbar-button>
+                    </div>         
                 </ons-toolbar>
--->
-                <ons-modal var="modal" id="pic_modal" style="background-color:rgba(0,0,0,0.9)">
 
-
-                    <ons-row>
-                        <ons-col width="100%">
-                            <img id="close" src="img/del2.png"/ style="float:right">
-                        </ons-col>
-                    </ons-row>
-                    <ons-carousel swipeable auto-scroll auto-refresh var="carousel" style="height: 1000px">
-
-                        <ons-carousel-item><img src="img/1.jpg"/></ons-carousel-item>
-                        <ons-carousel-item><img src="img/2.jpg"></ons-carousel-item>
-                        <ons-carousel-item><img src="img/3.jpg"/></ons-carousel-item>
-                        <ons-carousel-item><img src="img/4.jpg"></ons-carousel-item>
-
-                    </ons-carousel>
-
-                </ons-modal>
 {{ test }}
                 <ons-carousel id="details" swipeable auto-scroll var="carousel_stuff">
-                    <ons-carousel-item>
+                    <ons-carousel-item class="stuff_item">
                         <div class="stuff">
                             <div class="stuff_price">{{ test }}</div>
                             <img src="img/stuff/1.jpg"/>
@@ -118,34 +92,28 @@
                             </div>
                         </div>
 
+
                         <div id="delivery">
                             <p>Offering Pickup & Delivery</p>
                         </div>
 
                         <div class="messages">
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
+                            <div class="stuff_description">
+                                <div class="comment">
+                                    <div class="comment_user clearfix">
+                                        <p>username</p>
 
-                                    <p>10 min ago</p>
-                                </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
+                                        <p>10 min ago</p>
+                                    </div>
+                                    <div class="comment_text">
+                                        <p>blablbabla</p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
-
-                                    <p>10 min ago</p>
-                                </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
-                                </div>
+                            <div>
+                                <ons-button class="show_comments">Show Comments</ons-button>
                             </div>
                         </div>
-
 
                         <div class="compose">
                             <ons-row class="comment_textarea">
@@ -156,6 +124,56 @@
                                 </ons-col>
                             </ons-row>
                         </div>
+
+                        <ons-modal var="modal" id="pic_modal" style="background-color:rgba(0,0,0,0.9)">
+                            <div class="pic_modal_wrapper">
+                                <ons-row>
+                                    <ons-col width="100%">
+                                        <img class="close" src="img/del2.png"/ style="float:right">
+                                    </ons-col>
+                                </ons-row>
+                                <ons-carousel swipeable auto-scroll auto-refresh var="carousel" style="height: 1000px">
+                                    <ons-carousel-item><img src="img/1.jpg"/></ons-carousel-item>
+                                    <ons-carousel-item><img src="img/2.jpg"></ons-carousel-item>
+                                    <ons-carousel-item><img src="img/3.jpg"/></ons-carousel-item>
+                                    <ons-carousel-item><img src="img/4.jpg"></ons-carousel-item>
+                                </ons-carousel>
+                            </div>
+                        </ons-modal>
+
+                        <ons-modal var="modal" id="comments_modal" style="background-color:rgba(0,0,0,0.9)">
+                            <div class="comments_modal_wrapper">    
+                                <ons-row>
+                                    <ons-col width="100%">
+                                        <img class="close" src="img/del2.png"/ style="float:right">
+                                    </ons-col>
+                                </ons-row>
+
+                                <div class="comment_list">
+                                    <div class="comment">
+                                        <div class="comment_user clearfix">
+                                            <p>username</p>
+
+                                            <p>10 min ago</p>
+                                        </div>
+                                        <div class="comment_text">
+                                            <p>{{test}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="comment">
+                                        <div class="comment_user clearfix">
+                                            <p>username</p>
+
+                                            <p>10 min ago</p>
+                                        </div>
+                                        <div class="comment_text">
+                                            <p>blablbabla</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ons-modal>
 
                     </ons-carousel-item>
                     <ons-carousel-item>
@@ -193,37 +211,20 @@
                         </div>
 
                         <div class="messages">
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
+                            <div class="stuff_description">
+                                <div class="comment">
+                                    <div class="comment_user clearfix">
+                                        <p>username</p>
 
-                                    <p>10 min ago</p>
-                                </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
+                                        <p>10 min ago</p>
+                                    </div>
+                                    <div class="comment_text">
+                                        <p>blablbabla</p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
-
-                                    <p>10 min ago</p>
-                                </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
-                                </div>
-                            </div>
-
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
-
-                                    <p>10 min ago</p>
-                                </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
-                                </div>
+                            <div>
+                                <ons-button class="show_comments">Show Comments</ons-button>
                             </div>
                         </div>
 
@@ -274,59 +275,20 @@
                         </div>
 
                         <div class="messages">
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
+                            <div class="stuff_description">
+                                <div class="comment">
+                                    <div class="comment_user clearfix">
+                                        <p>username</p>
 
-                                    <p>10 min ago</p>
-                                </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
+                                        <p>10 min ago</p>
+                                    </div>
+                                    <div class="comment_text">
+                                        <p>blablbabla</p>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
-
-                                    <p>10 min ago</p>
-                                </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
-                                </div>
-                            </div>
-
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
-
-                                    <p>10 min ago</p>
-                                </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
-                                </div>
-                            </div>
-
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
-
-                                    <p>10 min ago</p>
-                                </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
-                                </div>
-                            </div>
-
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
-
-                                    <p>10 min ago</p>
-                                </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
-                                </div>
+                            <div>
+                                <ons-button class="show_comments">Show Comments</ons-button>
                             </div>
                         </div>
 
@@ -377,15 +339,20 @@
                         </div>
 
                         <div class="messages">
-                            <div class="comment">
-                                <div class="comment_user clearfix">
-                                    <p>username</p>
+                            <div class="stuff_description">
+                                <div class="comment">
+                                    <div class="comment_user clearfix">
+                                        <p>username</p>
 
-                                    <p>10 min ago</p>
+                                        <p>10 min ago</p>
+                                    </div>
+                                    <div class="comment_text">
+                                        <p>blablbabla</p>
+                                    </div>
                                 </div>
-                                <div class="comment_text">
-                                    <p>blablbabla</p>
-                                </div>
+                            </div>
+                            <div>
+                                <ons-button class="show_comments">Show Comments</ons-button>
                             </div>
                         </div>
 
