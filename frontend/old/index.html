@@ -7,8 +7,8 @@
 <script src="js/angular/angular.js"></script>
 <script src="js/onsenui.js"></script>
 <script>
-
 var module = ons.bootstrap();
+
 module.controller('AppController', function($scope) {
   ons.createPopover('popover.html').then(function(popover) {
     $scope.popover = popover;
@@ -19,14 +19,12 @@ module.controller('AppController', function($scope) {
   };
 });
 
-
 </script>
 </head>
 <body>
 
 
 <ons-navigator title="Navigator" var="myNavigator">
-
   <ons-page ng-controller="AppController">
 
   
