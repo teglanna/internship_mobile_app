@@ -41,7 +41,7 @@ var app = {
 
     //Geolocation
     onSuccess: function(position) {
-            alert('Latitude: '          + position.coords.latitude        + '\n' +
+        console.log('Latitude: '          + position.coords.latitude        + '\n' +
                   'Longitude: '         + position.coords.longitude       + '\n' +
                   'Altitude: '          + position.coords.altitude        + '\n' +
                   'Accuracy: '          + position.coords.accuracy        + '\n' +
@@ -237,9 +237,23 @@ $(document).on('pageinit', '#page1', function() {
 
 //        carousel.refresh();        
   });
-    
-});
 
+    $('#buy_button').click(function() {   
+        myNavigator.pushPage('buybid.html');
+        $(document).on('pageinit', '#buybid', function() {
+        $('#bid_row').hide();
+        $('#buy_row').show();
+    });
+  });
+    $('#bid_button').click(function() {   
+        myNavigator.pushPage('buybid.html');
+        $(document).on('pageinit', '#buybid', function() {
+        $('#buy_row').hide();
+        $('#bid_row').show();
+    });
+  });
+
+});
 
 
 $(document).on('picture-ready', function() {

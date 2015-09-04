@@ -106,13 +106,13 @@
                             </div>
 
                             <div class="navigation-bar__center">
-                                <ons-button modifier="chevron" onclick="myNavigator.pushPage('buy.html')">
+                                <ons-button id="buy_button">
                                     Buy
                                 </ons-button>
                             </div>
 
                             <div class="navigation-bar__right">
-                                <ons-button modifier="chevron" onclick="myNavigator.pushPage('bid.html')">
+                                <ons-button id="bid_button">
                                     Bid
                                 </ons-button>
                             </div>
@@ -508,11 +508,16 @@
 </script>
 -->
 
-<script type="text/ons-template" id="bid.html">
-    <ons-page ng-controller="StuffCtrl">
+<script type="text/ons-template" id="buybid.html">
+    <ons-page id="buybid" ng-controller="StuffCtrl">
+      <ons-row id="bid_row">
+        <ons-col width="50%">BID</ons-col>
+        <ons-col width="50%"><textarea class="textarea description" rows="1" placeholder="Give me a number!"></textarea>
+        </ons-col>
+      </ons-row>
       <ons-row id="buy_row">
+        <ons-col width="50%">BUY</ons-col>
         <ons-col width="50%">{{test}}</ons-col>
-        <ons-col width="50%">1200Ft</div></ons-col>
       </ons-row>
 
     <div style="height:300px; border-style: solid; border-color:blue;"><textarea class="textarea description" rows="5" placeholder="Hi, I'm Joe"></textarea></div>
@@ -527,7 +532,7 @@
 
           <div class="navigation-bar__center"> </div>
 
-          <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('buy.html')">
+          <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('request.html')">
             <div class="button navigation-bar__line-height">Send Request</div>
           </div>
         </div>        
@@ -535,7 +540,7 @@
     </ons-page>
 </script>
 
-
+<!--
 <ons-template id="buy.html">
     <ons-page ng-controller="StuffCtrl">
       <ons-row id="buy_row">
@@ -562,15 +567,16 @@
       
     </ons-page>
 </ons-template>
+-->
 
-<!--
 <script type="text/ons-template" id="request.html">
-    <ons-page>
-        <div style="height:300px"></div>
+    <ons-page ng-controller="StuffCtrl">
+        <div style="text-align:center; height:300px"></div>
         <div>
             <p>
                 Request sent!</br>
-                You will receive the answer directly in your mail.
+                You will receive the answer directly in your mail.</br>
+                {{test}}
             </p>
         </div>
 
@@ -578,7 +584,7 @@
         <h1>req</h1>
     </ons-page>
 </script>
--->
+
         </ons-page>
     </ons-navigator>
 
