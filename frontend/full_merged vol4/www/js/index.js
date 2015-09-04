@@ -1,7 +1,68 @@
-var SwipeBuy = ons.bootstrap('SwipeBuy', ['onsen']);
+var SwipeBuy = ons.bootstrap('SwipeBuy', ['onsen', 'angularMoment']);
 
-SwipeBuy.controller('StuffCtrl', function ($scope) {
-   $scope.test = "hello";
+SwipeBuy.controller('StuffCtrl', function ($scope, $http, distanceFilter) {
+    $http.get('http://192.168.99.100:8000/stuffs').then(function(obj){
+        $scope.results = obj.data.results;
+    });
+
+    $scope.buy = function () {
+        myNavigator.pushPage('buybid.html');
+        $(document).on('pageinit', '#buybid', function () {
+            $('#bid_row').hide();
+            $('#buy_row').show();
+        });
+    };
+
+    $scope.bid = function(){
+        myNavigator.pushPage('buybid.html');
+        $(document).on('pageinit', '#buybid', function () {
+            $('#buy_row').hide();
+            $('#bid_row').show();
+        });
+    };
+
+    $scope.showGallery = function(){
+        $('#pic_modal').show();
+
+        $('.close').click(function () {
+            $('#pic_modal').hide();
+        });
+    };
+
+    $scope.showComments = function(id){
+        $http.get('http://192.168.99.100:8000/messages/' + id).then(function(objects){
+            $scope.comments = objects.data;
+            $('#comments_modal').show();
+        });
+
+        $('.close').click(function () {
+            $('#comments_modal').hide();
+        });
+    };
+});
+
+SwipeBuy.directive("carouselItem", function () {
+    return {
+        restrict: "E",
+        replace: true,
+        templateUrl: "templates/carousel-item.html"
+    };
+});
+
+SwipeBuy.filter('distance', function () {
+    return function (input) {
+        if (input >= 1000) {
+            return (input / 1000).toFixed(2) + 'km';
+        } else {
+            return input + 'm';
+        }
+    }
+});
+
+SwipeBuy.filter('yesNo', function() {
+    return function(input, text) {
+        return input ? text : '';
+    };
 });
 //SwipeBuy.controller('PageController', function ($scope) {
 //    ons.ready(function () {
@@ -106,8 +167,6 @@ var app = {
     onDeviceReady: function() {
         app.onStartCamera();
         cordova.plugins.camerapreview.setOnPictureTakenHandler(function(result){
-            document.getElementById('originalPicture').src = result[0];//originalPicturePath;
-            document.getElementById('previewPicture').src = result[1];//previewPicturePath;
             appendImage(result[1]);
             $(document).trigger('picture-ready');
         });
@@ -134,19 +193,16 @@ var app = {
 
 };
 
-//ons.bootstrap();
-
 $(function(){
     setTimeout(function() {
         app.geoEvents();
     }, 0);
 });
 
-
 var images = [];
 function appendImage(result) {
     images.push(result);
-};
+}
 
 
 createImageSlide = function(imgs) {
@@ -196,70 +252,10 @@ setCarouselHeight = function() {
     $('ons-carousel').css('height', stuff_height + buttons_height + delivery_height + messages_height + compose_height + 50);
 };
 
-/*
-$(document).on("pageinit", '#page1', function() {
-    $('#load_modal').show();
-    setTimeout("$('#load_modal').hide()", 2000);
-
-});
-*/
-
-//for swipeable image-modal!
-
-/*
-var images2 = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg'];
-
-createCarousel = function(imgs) {
-    for (var i = 0; i < imgs.length; i++) {
-        var imageURL = imgs[i];
-        $("ons-modal#pic_modal ons-carousel").append('<ons-carousel-item><img src=' + imageURL + '></ons-carousel-item>');
-        
-    }
-
-};
-*/
-
-
-$(document).on('pageinit', '#page1', function() {
+$(document).on('pageinit', '#page1', function () {
 
     $('#load_modal').show();
     setTimeout("$('#load_modal').hide()", 2000);
-
-        setCarouselHeight();
-
-//    createCarousel(images2);  
-    $("ons-carousel-item img", this).click(function() {
-        $('#pic_modal').show();
-
-        $('.close').click(function() {
-            $('#pic_modal').hide();
-        });
-
-//        carousel.refresh();        
-  });
-
-    $('.show_comments').click(function(){
-        $('#comments_modal').show();
-
-        $('.close').click(function() {
-            $('#comments_modal').hide();
-        });
-    });
-
-    $('#buy_button').click(function() {   
-        myNavigator.pushPage('buybid.html');
-        $(document).on('pageinit', '#buybid', function() {
-        $('#bid_row').hide();
-        $('#buy_row').show();
-    });
-  });
-    $('#bid_button').click(function() {   
-        myNavigator.pushPage('buybid.html');
-        $(document).on('pageinit', '#buybid', function() {
-        $('#buy_row').hide();
-        $('#bid_row').show();
-    });
-  });
 
 });
 

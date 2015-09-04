@@ -1,0 +1,104 @@
+<ons-carousel-item class="stuff_item" >
+    <div class="stuff">
+        <div class="stuff_price">price: {{ result.price }}</div>
+        <img src="{{ result.main_img }}" ng-click="showGallery()"/>
+        <ul class="stuff_info">
+            <li>distance: {{ result.distance | distance }}</li>
+            <li>{{ result.comment_count }} comments</li>
+            <li>{{ result.views }} views</li>
+        </ul>
+    </div>
+
+    <div class="navigation-bar actions">
+        <div class="navigation-bar__left">
+            <ons-button modifier="chevron">
+                Share
+            </ons-button>
+        </div>
+
+        <div class="navigation-bar__center">
+            <ons-button id="buy_button" ng-click="buy()">
+                Buy
+            </ons-button>
+        </div>
+
+        <div class="navigation-bar__right">
+            <ons-button id="bid_button" ng-click="bid()">
+                Bid
+            </ons-button>
+        </div>
+    </div>
+
+
+    <div id="delivery">
+        <p><span ng-show="result.pickup || result.delivery">Offering</span> {{ result.pickup | yesNo: "Pickup" }} {{ result.delivery | yesNo: "Delivery" }}</p>
+    </div>
+
+    <div class="messages">
+        <div class="stuff_description">
+            <div class="comment">
+                <div class="comment_user clearfix">
+                    <p>{{ result.full_name }}</p>
+
+                    <p am-time-ago="result.created"></p>
+                </div>
+                <div class="comment_text">
+                    <p>{{ result.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <ons-button class="show_comments" ng-click="showComments(result.id)">Show Comments</ons-button>
+        </div>
+    </div>
+
+    <div class="compose">
+        <ons-row class="comment_textarea">
+            <ons-col width="80%"><textarea class="comment_write" rows="5"
+                                           placeholder="write a comment"></textarea></ons-col>
+            <ons-col width="20%">
+                <ons-button class="comment_send">Send</ons-button>
+            </ons-col>
+        </ons-row>
+    </div>
+
+    <ons-modal var="modal" id="pic_modal" style="background-color:rgba(0,0,0,0.9)">
+        <div class="pic_modal_wrapper">
+            <ons-row>
+                <ons-col width="100%">
+                    <img class="close" src="img/del2.png" style="float:right">
+                </ons-col>
+            </ons-row>
+            <ons-carousel swipeable auto-scroll auto-refresh var="carousel" style="height: 1000px">
+                <ons-carousel-item><img src="img/1.jpg"/></ons-carousel-item>
+                <ons-carousel-item><img src="img/2.jpg"></ons-carousel-item>
+                <ons-carousel-item><img src="img/3.jpg"/></ons-carousel-item>
+                <ons-carousel-item><img src="img/4.jpg"></ons-carousel-item>
+            </ons-carousel>
+        </div>
+    </ons-modal>
+
+    <ons-modal var="modal" id="comments_modal" style="background-color:rgba(0,0,0,0.9)">
+        <div class="comments_modal_wrapper">
+            <ons-row>
+                <ons-col width="100%">
+                    <img class="close" src="img/del2.png" style="float:right">
+                </ons-col>
+            </ons-row>
+
+            <div class="comment_list">
+                <div class="comment" ng-repeat="comment in comments">
+                    <div class="comment_user clearfix">
+                        <p>{{ comment.author }}</p>
+
+                        <p am-time-ago="comment.created"></p>
+                    </div>
+                    <div class="comment_text">
+                        <p>{{ comment.text }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ons-modal>
+
+</ons-carousel-item>
