@@ -2,8 +2,8 @@
   {
     "fields": {
       "username": "alma",
-      "first_name": "",
-      "last_name": "",
+      "first_name": "Alma",
+      "last_name": "Korte",
       "is_active": true,
       "is_superuser": true,
       "is_staff": true,
