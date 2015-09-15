@@ -54,7 +54,7 @@
         <div id="home">
             <ons-toolbar>
                 <div class="right">
-                    <ons-toolbar-button modifier="chevron" onclick="myNavigator.pushPage('camera.html')">
+                    <ons-toolbar-button ng-click="camera()">
                         Sell&#10140;</ons-toolbar-button>
                 </div>
             </ons-toolbar>
@@ -77,9 +77,6 @@
                                         onclick="myNavigator.pushPage('slide.html')">Snap
                             </ons-button>
                         </div>
-                        <div class="block">
-                            <ons-button modifier="chevron" onclick="myNavigator.popPage()">Back</ons-button>
-                        </div>
                     </div>
                 </div>
 
@@ -88,7 +85,7 @@
 
         <!-- slide page -->
 
-        <!--
+
         <script type="text/ons-template" id="slide.html">
             <ons-page id="slide">
                 <ul class="pgwSlideshow"></ul>
@@ -159,9 +156,10 @@
                 <p>Good luck!</p>
 
                 <p>Spread the word!</p>
+                <ons-button class="button" modifier="chevron">OK</ons-button>
             </ons-page>
         </script>
-        -->
+
 
         <script type="text/ons-template" id="buybid.html">
             <ons-page id="buybid">

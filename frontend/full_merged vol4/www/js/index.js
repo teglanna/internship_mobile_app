@@ -39,6 +39,14 @@ SwipeBuy.controller('StuffCtrl', function ($scope, $http, distanceFilter) {
             $('#comments_modal').hide();
         });
     };
+
+    $scope.camera = function(){
+        myNavigator.pushPage('camera.html');
+    };
+
+    $scope.goToMain = function(){
+        $('#page1').show();
+    }
 });
 
 SwipeBuy.directive("carouselItem", function () {
@@ -56,7 +64,7 @@ SwipeBuy.filter('distance', function () {
         } else {
             return input + 'm';
         }
-    }
+    };
 });
 
 SwipeBuy.filter('yesNo', function() {
@@ -93,9 +101,9 @@ var app = {
     },
 
     cameraEvents: function() {
-    
+
         var self = this;
-        
+
         document.getElementById('takePictureButton').addEventListener('mousedown', self.onTakePicture, false);
         document.addEventListener('deviceready', self.onDeviceReady, false);
     },
@@ -133,7 +141,7 @@ var app = {
                     $('#page1 #disabled').show();
                     $('ons-toolbar.navigation-bar').hide();
                     $('#page1 #home').hide();
-                     }           
+                     }
             },
 
             function(e){
