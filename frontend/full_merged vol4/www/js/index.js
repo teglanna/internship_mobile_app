@@ -44,9 +44,6 @@ SwipeBuy.controller('StuffCtrl', function ($scope, $http, distanceFilter) {
         myNavigator.pushPage('camera.html');
     };
 
-    $scope.goToMain = function(){
-        $('#page1').show();
-    }
 });
 
 SwipeBuy.directive("carouselItem", function () {
@@ -82,14 +79,7 @@ var app = {
     temp : {
         DEVICE_WIDTH: window.innerWidth,
     },
-    // Application Constructor
-//    initialize: function() {
-//        this.bindEvents();
-//    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
+
     geoEvents: function() {
         //Geoloc
         var self = this;
@@ -244,27 +234,10 @@ setPicActive = function() {
     });
 };
 
-setCamBackground = function() {
-    $('ons-sliding-menu').children().css('background-color', 'transparent');
-};
-
-setCarouselHeight = function() {
-    var stuff_height = $('ons-carousel-item .stuff').height();
-    var buttons_height = $('ons-carousel-item .actions').height();
-    var delivery_height = $('ons-carousel-item #delivery').height();
-    var messages_height = $('ons-carousel-item .messages').height();
-    var compose_height = $('ons-carousel-item .compose').height();
-
-    // if (item is active){ carousel height is set }
-
-    $('ons-carousel').css('height', stuff_height + buttons_height + delivery_height + messages_height + compose_height + 50);
-};
 
 $(document).on('pageinit', '#page1', function () {
-
     $('#load_modal').show();
     setTimeout("$('#load_modal').hide()", 2000);
-
 });
 
 
