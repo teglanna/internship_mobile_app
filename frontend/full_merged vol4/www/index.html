@@ -63,8 +63,6 @@
             </ons-carousel>
         </div>
 
-        <!--</script>-->
-
 
         <!-- camera page -->
 
@@ -149,16 +147,16 @@
         </script>
 
 
-        <script type="text/ons-template" id="success.html">
+        <ons-template id="success.html">
             <ons-page>
                 <h1>Your item is now active!</h1>
 
                 <p>Good luck!</p>
 
                 <p>Spread the word!</p>
-                <ons-button class="button" modifier="chevron">OK</ons-button>
+                <ons-button class="button" onclick="location.reload()">OK</ons-button>
             </ons-page>
-        </script>
+        </ons-template>>
 
 
         <script type="text/ons-template" id="buybid.html">
@@ -171,7 +169,7 @@
                 </ons-row>
                 <ons-row id="buy_row">
                     <ons-col width="50%">BUY</ons-col>
-                    <ons-col width="50%">{{test}}</ons-col>
+                    <ons-col width="50%"></ons-col>
                 </ons-row>
 
                 <div style="height:300px; border-style: solid; border-color:blue;"><textarea
