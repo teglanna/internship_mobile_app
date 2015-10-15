@@ -1,0 +1,11 @@
+#camera_box{
+    height:100%;
+    color:#333;
+    text-align: center;
+    font-family: sans-serif;
+    background-color: transparent;
+}
+
+.controls{
+    margin-top:100%;
+}

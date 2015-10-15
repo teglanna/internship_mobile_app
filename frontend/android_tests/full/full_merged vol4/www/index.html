@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <!--
+            <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    -->
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
+    <link rel="stylesheet" href="css/onsenui.css">
+    <link rel="stylesheet" href="css/onsen-css-components.css">
+    <link rel="stylesheet" type="text/css" href="css/pg.css">
+    <link rel="stylesheet" type="text/css" href="css/pg_light.min.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="css/custom_desc.css">
+    <link rel="stylesheet" href="css/carousel.css">
+
+    <!--        <link rel="stylesheet" href="css/diag.css"> -->
+    <title>Angular1</title>
+    <script type="text/javascript" src="js/angular/angular.js"></script>
+    <script type="text/javascript" src="http://momentjs.com/downloads/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/angular.moment/0.10.2/angular-moment.min.js"></script>
+    <script type="text/javascript" src="js/jquery.2.min.js"></script>
+    <script type="text/javascript" src="js/onsenui.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova_plugins.js"></script>
+    <script type="text/javascript" src="CameraPreview.js"></script>
+    <script type="text/javascript" src="js/pg.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+<body>
+
+<!-- main page -->
+
+<ons-navigator var="myNavigator">
+    <ons-page id="page1" ng-controller="StuffCtrl">
+        <ons-modal var="modal" id="load_modal">
+            <ons-icon icon="ion-load-c" spin="true"></ons-icon>
+            Loading SwipeBuy
+        </ons-modal>
+        <div id="disabled">
+            <p>
+                'Whoops, your phones "Location Service" shall be turned on so we can find the stuff close to your
+                location. Enable and:'
+            </p>
+
+            <div id="settings">
+                <button id="do-check">Re-check state</button>
+            </div>
+        </div>
+        <div id="home">
+            <ons-toolbar>
+                <div class="right">
+                    <ons-toolbar-button ng-click="camera()">
+                        Sell&#10140;</ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+            <ons-carousel id="details" swipeable auto-scroll auto-refresh var="carousel_stuff" style="height: 1000px">
+                <carousel-item ng-repeat="result in results"></carousel-item>
+            </ons-carousel>
+        </div>
+
+
+        <!-- camera page -->
+
+        <ons-template id="camera.html">
+            <ons-page id="camera" style="background-color: transparent">
+                <div id="camera_box">
+                    <div class="controls">
+                        <div class="block">
+                            <ons-button id="takePictureButton" modifier="chevron"
+                                        onclick="myNavigator.pushPage('slide.html')">Snap
+                            </ons-button>
+                        </div>
+                    </div>
+                </div>
+
+            </ons-page>
+        </ons-template>
+
+        <!-- slide page -->
+
+
+        <script type="text/ons-template" id="slide.html">
+            <ons-page id="slide">
+                <ul class="pgwSlideshow"></ul>
+
+                <div class="navigation-bar">
+                    <div class="navigation-bar__left">
+                        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                            Add More
+                        </ons-button>
+                    </div>
+
+                    <div class="navigation-bar__center"></div>
+
+                    <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('description.html')">
+                        <div class="button navigation-bar__line-height">Next</div>
+                    </div>
+                </div>
+            </ons-page>
+        </script>
+
+
+        <script type="text/ons-template" id="description.html">
+            <ons-page id="description">
+                <div>
+                    <p id="price_title">Price</p>
+                    <ons-row>
+                        <ons-col width="15%" class="huf">HUF</ons-col>
+                        <ons-col width="45%"><textarea class="textarea price" rows="1" placeholder="Price"></textarea></ons-col>
+                    </ons-row>
+                </div>
+                <ons-row>
+                    <ons-col width="100%"><textarea class="textarea description" rows="5" placeholder="Description"></textarea>
+                    </ons-col>
+                </ons-row>
+                <div>
+                    <p>Delivery</p>
+                    <label class="checkbox">
+                        <input type="checkbox" checked="checked">
+
+                        <div class="checkbox__checkmark"></div>
+                        Buyer can pickup
+                    </label>
+                    <br>
+                    <label class="checkbox">
+                        <input type="checkbox" checked="checked">
+
+                        <div class="checkbox__checkmark"></div>
+                        I can offer delivery
+                    </label>
+                </div>
+                <p>Actual image</p>
+
+                <div class="desc_images">
+                    <div class="wrapper">
+                    </div>
+                </div>
+                <div class="submit">
+                    <ons-button class="button" modifier="chevron" onclick="myNavigator.pushPage('success.html')">Post
+                    </ons-button>
+                </div>
+        </script>
+
+
+        <ons-template id="success.html">
+            <ons-page>
+                <h1>Your item is now active!</h1>
+
+                <p>Good luck!</p>
+
+                <p>Spread the word!</p>
+                <ons-button class="button" onclick="location.reload()">OK</ons-button>
+            </ons-page>
+        </ons-template>>
+
+
+        <script type="text/ons-template" id="buybid.html">
+            <ons-page id="buybid">
+                <ons-row id="bid_row">
+                    <ons-col width="50%">BID</ons-col>
+                    <ons-col width="50%"><textarea class="textarea description" rows="1"
+                                                   placeholder="Give me a number!"></textarea>
+                    </ons-col>
+                </ons-row>
+                <ons-row id="buy_row">
+                    <ons-col width="50%">BUY</ons-col>
+                    <ons-col width="50%"></ons-col>
+                </ons-row>
+
+                <div style="height:300px; border-style: solid; border-color:blue;"><textarea
+                        class="textarea description" rows="5" placeholder="Hi, I'm Joe"></textarea></div>
+
+
+                <div class="navigation-bar">
+                    <div class="navigation-bar__left">
+                        <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+                            Cancel
+                        </ons-button>
+                    </div>
+
+                    <div class="navigation-bar__center"></div>
+
+                    <div class="navigation-bar__right" modifier="chevron"
+                         onclick="myNavigator.pushPage('request.html')">
+                        <div class="button navigation-bar__line-height">Send Request</div>
+                    </div>
+                </div>
+
+            </ons-page>
+        </script>
+
+        <script type="text/ons-template" id="request.html">
+            <ons-page>
+                <div style="text-align:center; height:300px"></div>
+                <div>
+                    <p>
+                        Request sent!</br>
+                        You will receive the answer directly in your mail.</br>
+                    </p>
+                </div>
+
+
+                <h1>req</h1>
+            </ons-page>
+        </script>
+
+    </ons-page>
+</ons-navigator>
+
+</body>
+</html>

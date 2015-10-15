@@ -1,4 +1,9 @@
-# About the project
+#Internship - Mobile app development
+- Duration: six weeks: August-November 2015
+- Location: Pulilab, Budapest
+- Participants: Júlia Erő, Anna Téglássy
+
+## About the project
 ## How it's working?
 1, It gets your location
 
@@ -32,3 +37,8 @@
 Development environment: **Docker** - an open platform for building, shipping and running distributed applications.
 
 Test driven development: we used **pytest** to test everything working fine.
+
+### Illustrations
+![illustration1](swipe_img/5.png)
+![bidbuy](swipe_img/6.png)
+![bidbuy](swipe_img/7.png)

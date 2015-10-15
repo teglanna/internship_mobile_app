@@ -1,0 +1,64 @@
+
+
+body {
+    text-transform: none;
+}
+
+.page__content {
+    margin: 10px;
+}
+
+.row {
+    margin: 5px 0;
+}
+
+textarea.textarea.price {
+    width: 100%;
+}
+
+textarea.textarea.description {
+    width: 100%;
+}
+
+.images {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    width: 300px;
+}
+
+.wrapper {
+    width: 600px;
+}
+
+.pic {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    margin-right: 10px;
+    float: left;
+}
+
+.active {
+    border: 3px solid blue;
+}
+
+.submit {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"> -->
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" href="css/onsenui.css">
+        <link rel="stylesheet" href="css/onsen-css-components.css">
+        <link rel="stylesheet" type="text/css" href="css/pg.css">
+        <link rel="stylesheet" type="text/css" href="css/pg_light.min.css">
+        <link rel="stylesheet" href="css/camera.css">
+        <title>Camera Slide</title>
+        <script type="text/javascript" src="js/angular/angular.js"></script>
+        <script type="text/javascript" src="js/jquery.2.min.js"></script>
+        <script type="text/javascript" src="js/onsenui.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="cordova_plugins.js"></script>
+        <script type="text/javascript" src="CameraPreview.js"></script>
+        <script type="text/javascript" src="js/pg.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script> ons.bootstrap(); </script>
+
+    </head>
+    <body id="cameraBody">
+    <ons-navigator title="Navigator" var="myNavigator" style="background-color: transparent">
+    <ons-page style="background-color: transparent">
+    <div id="camera">
+		<div class="controls">
+			<div class="block">
+				<ons-button id="startCameraButton">Start Camera at back</ons-button>
+				<ons-button id="startCameraAnotherPosButton">Start Camera at front</ons-button>
+            </div>
+
+            <div class="block">
+				<ons-button id="switchCameraButton">Switch Camera</ons-button>
+                <ons-button id="stopCameraButton">Stop Camera</ons-button>
+            </div>
+            <div class="block">
+                <ons-button id="takePictureButton">Take Picture</ons-button>
+                <ons-button id="next" modifier="chevron" onclick="myNavigator.pushPage('slide.html')">Next</ons-button>
+			</div>
+        </div>
+		<div class="pictures">
+			<p><img id="previewPicture" width="200"/></p>
+			<p><img id="originalPicture" width="200"/></p>
+		</div>
+    </div>
+
+
+<!-- slide page -->
+
+    <ons-template id="slide.html">
+
+        <ons-page id="slide">
+          <ul class="pgwSlideshow"></ul>
+
+
+        <div class="navigation-bar">
+          <div class="navigation-bar__left">
+            <ons-button modifier="chevron" onclick="myNavigator.popPage()">
+              Add More
+            </ons-button>
+          </div>
+
+          <div class="navigation-bar__center"> </div>
+
+          <div class="navigation-bar__right" modifier="chevron" onclick="myNavigator.pushPage('page1.html', { animation : 'lift' } )">
+            <div class="button navigation-bar__line-height">Next</div>
+          </div>
+        </div>
+
+          </ons-page>
+    </ons-template>
+
+<!-- end slide page -->
+
+<!-- camera page -->
+
+<!--     <ons-template id="camera.html">
+        <ons-page>
+     <div id="camera" style="">
+        <div class="controls">
+            <div class="block">
+                <ons-button id="startCameraButton">Start Camera at back</ons-button>
+                <ons-button id="startCameraAnotherPosButton">Start Camera at front</ons-button>
+            </div>
+
+            <div class="block">
+                <ons-button id="switchCameraButton">Switch Camera</ons-button>
+                <ons-button id="stopCameraButton">Stop Camera</ons-button>
+            </div>
+            <div class="block">
+                <ons-button id="takePictureButton">Take Picture</ons-button>
+                <ons-button id="next" modifier="chevron" onclick="myNavigator.pushPage('slide.html')">Next</ons-button>
+            </div>
+        </div>
+        <div class="pictures">
+            <p><img id="previewPicture" width="200"/></p>
+            <p><img id="originalPicture" width="200"/></p>
+        </div>
+    </div>
+        </ons-page>
+    </ons-template> -->
+
+
+<!-- end camera page -->
+
+</ons-page>
+    </ons-navigator>
+        <!-- // <script type="text/javascript" src="js/slideshow.js"></script> -->
+    </body>
+</html>

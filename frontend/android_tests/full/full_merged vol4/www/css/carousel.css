@@ -1,0 +1,56 @@
+ons-carousel-item img {
+	width: 300px;
+	height: 300px;
+}
+
+.stuff_price {
+	height: 20px;
+}
+
+.stuff_info {
+	height: 20px;
+	margin: 0;
+}
+
+.stuff_info li {
+	float: left;
+	list-style-type: none;
+	margin-right: 10px;
+}
+
+.messages {
+	height: 200px;
+}
+
+.comment {
+	width: 100%;
+	height: 120px;
+	margin-bottom: 15px;
+}
+
+.comment_user p {
+	float: left;
+	margin: 0 30px 0 0;
+}
+
+.comment_text {
+	width: 100%;
+	height:100px;
+	border: 2px solid #000;
+	background-color: #78afae;
+}
+
+textarea.comment_write {
+	width: 100%;
+	font-size: 14px;
+}
+
+.comment_send {
+	margin-left: 10px;
+}
+
+.pic_modal_wrapper,
+.comments_modal_wrapper {
+	width: 90%;
+	margin: 0 auto;
+}
