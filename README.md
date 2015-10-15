@@ -21,14 +21,14 @@
 
 ### Frontend side
 
-++Apache Cordova++ is a platform for building native mobile applications using HTML, CSS and JavaScript.
+**Apache Cordova** is a platform for building native mobile applications using HTML, CSS and JavaScript.
 
-++Onsen UI++ is a Javascript and CSS framework for developing awesome looking and high performance HTML5 mobile apps. It provides ++AngularJS++ and ++jQuery++ bindings.
+**Onsen UI** is a Javascript and CSS framework for developing awesome looking and high performance HTML5 mobile apps. It provides **AngularJS** and **jQuery** bindings.
 
 ### Backend side
 
-++Django REST++ framework makes it easy to build Web APIs and provides powerful model serialization.
+**Django REST** framework makes it easy to build Web APIs and provides powerful model serialization.
 
-Development environment: ++Docker++ - an open platform for building, shipping and running distributed applications.
+Development environment: **Docker** - an open platform for building, shipping and running distributed applications.
 
-Test driven development: we used ++py-test++ to test everything working fine.
+Test driven development: we used **pytest** to test everything working fine.
